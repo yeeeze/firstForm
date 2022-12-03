@@ -27,7 +27,7 @@ jobs:
         shell: bash
 
       - name: deliver application.properties
-        run: echo "${{ secrets.PROPERTIES }}" > ./src/main/resources/application/properties
+        run: echo "${{ secrets.PROPERTIES }}" > ./src/main/resources/application.properties
         shell: bash
 
       - name: Build with Gradle
