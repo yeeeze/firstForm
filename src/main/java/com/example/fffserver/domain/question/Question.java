@@ -1,6 +1,6 @@
 package com.example.fffserver.domain.question;
 
-import com.example.fffserver.common.BaseEntity;
+import com.example.fffserver.domain.common.BaseEntity;
 import org.bson.types.ObjectId;
 import org.springframework.data.mongodb.core.mapping.Document;
 

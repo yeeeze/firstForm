@@ -1,4 +1,4 @@
-package com.example.fffserver.common;
+package com.example.fffserver.domain.common;
 
 import org.springframework.data.annotation.CreatedDate;
 

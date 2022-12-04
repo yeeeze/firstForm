@@ -1,6 +1,6 @@
 package com.example.fffserver.domain.form.domain.entity;
 
-import com.example.fffserver.common.BaseEntity;
+import com.example.fffserver.domain.common.BaseEntity;
 import com.example.fffserver.domain.form.domain.StatusType;
 import com.example.fffserver.domain.question.Question;
 import org.bson.types.ObjectId;
