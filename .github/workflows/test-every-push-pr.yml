@@ -34,7 +34,7 @@ jobs:
         run: ./gradlew build -x test
 
       - name: Test with Gradle
-        run: ./gradlew test
+        run: SPRING_PROFILES_ACTIVE=[test] ./gradlew test
 
       - name: Publish Unit Test Results
         uses: EnricoMi/publish-unit-test-result-action@v1

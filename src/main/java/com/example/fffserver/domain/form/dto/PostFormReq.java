@@ -1,4 +1,4 @@
-package com.example.fffserver.domain.dto;
+package com.example.fffserver.domain.form.dto;
 
 import com.example.fffserver.domain.form.domain.entity.Form;
 import com.example.fffserver.domain.question.Question;

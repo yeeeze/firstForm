@@ -1,7 +1,7 @@
 package com.example.fffserver.domain.form.controller;
 
 import com.example.fffserver.domain.form.application.FormService;
-import com.example.fffserver.domain.dto.PostFormReq;
+import com.example.fffserver.domain.form.dto.PostFormReq;
 import com.example.fffserver.domain.form.domain.entity.Form;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
