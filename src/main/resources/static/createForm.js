@@ -13,6 +13,10 @@ function createForm() {
     let parent = fc.childNodes[1].childNodes[1].childNodes[1];
     parent.id = 'parent' + idNum;
 
+    const input = fc.childNodes[1].childNodes[1].childNodes[1].childNodes[1].childNodes[1].childNodes[1];
+    input.id = "question" + idNum;
+    input.value = null;
+
     let selectChild = fc.childNodes[1].childNodes[1].childNodes[1].childNodes[3].childNodes[1]
     selectChild.id = "selectType" + idNum;
     selectChild.innerHTML =
