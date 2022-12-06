@@ -24,7 +24,8 @@ function createForm() {
     let newDiv = document.createElement("div");
     insertInitTextAnswer(newDiv, parent, idNum);
 
-    selectChild.addEventListener('change', (event) => selectChange(event, idNum));
+    const id = idNum;
+    selectChild.addEventListener('change', (event) => selectChange(event, id));
 }
 
 // display none 같이 html 파일에 적고 (1개만 보이게)
