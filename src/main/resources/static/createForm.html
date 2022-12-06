@@ -39,10 +39,11 @@
             <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
                 <li><a href="#" class="nav-link px-2 link-secondary">질문</a></li>
                 <li><a href="#" class="nav-link px-2 link-dark">응답</a></li>
+                <li><a href="setting.html" class="nav-link px-2 link-dark">설정</a></li>
             </ul>
 
             <div class="col-md-3 text-end">
-                <button type="button" class="btn btn-warning" name="postFormReq" formmethod="post" formaction="http://localhost:8080/api/v1/form">보내기</button>
+                <button id="postFormButton" type="button" class="btn btn-warning" name="postFormReq">보내기</button>
             </div>
         </header>
     </div>
@@ -57,14 +58,24 @@
             </article>
         </div>
     </aside>
+    <div class="card" style="margin-top: 10px; margin-bottom: 10px">
+        <h5 class="card-header">선착순 Form</h5>
+        <div class="card-body" style="padding: 30px">
+            <input class="form-control form-control-lg" type="text" id="title" placeholder="제목 없는 설문지" aria-label=".form-control-lg example">
+            <br>
+            <div class="input-group">
+                <textarea class="form-control" id="description" aria-label="With textarea" placeholder="설문지 설명" style="border: none"></textarea>
+            </div>
+        </div>
+    </div>
     <section id="section">
-        <article id="formContent0" style="padding-bottom: 15px; padding-top: 20px">
+        <article id="formContent0" style="padding-bottom: 10px; padding-top: 10px">
             <div class="card" style="padding: 30px">
                 <div class="card-body">
                     <div class="row" id="parent0">
                         <div class="col-8">
                             <div class="mb-3">
-                                <input type="text" class="form-control" id="exampleInputEmail1" placeholder="질문" aria-describedby="emailHelp">
+                                <input type="text" class="form-control" id="question" placeholder="질문" aria-describedby="emailHelp">
                             </div>
                         </div>
                         <div class="col-4">
@@ -79,5 +90,6 @@
         </article>
     </section>
     <script src="createForm.js"></script>
+    <script src="createFormApi.js"></script>
 </body>
 </html>
