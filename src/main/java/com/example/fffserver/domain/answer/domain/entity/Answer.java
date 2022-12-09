@@ -1,4 +1,4 @@
-package com.example.fffserver.domain.answer;
+package com.example.fffserver.domain.answer.domain.entity;
 
 import com.example.fffserver.domain.common.BaseEntity;
 import org.bson.types.ObjectId;
@@ -16,5 +16,18 @@ public class Answer extends BaseEntity {
     private ObjectId questionId;
 
     public Answer() {
+    }
+
+    public Answer(String content, ObjectId formId) {
+        this.content = content;
+        this.formId = formId;
+    }
+
+    public void setQuestionId(ObjectId questionId) {
+        this.questionId = questionId;
+    }
+
+    public ObjectId getFormId() {
+        return formId;
     }
 }

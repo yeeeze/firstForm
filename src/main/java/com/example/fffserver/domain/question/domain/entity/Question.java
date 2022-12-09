@@ -22,4 +22,8 @@ public class Question extends BaseEntity {
         this.title = title;
         Type = QuestionType.valueOf(type);
     }
+
+    public ObjectId getId() {
+        return id;
+    }
 }
