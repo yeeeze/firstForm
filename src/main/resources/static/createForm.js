@@ -1,3 +1,5 @@
+// TODO checkbox 상세 옵션 DB에 저장 추가해야함..
+
 // +버튼을 누르면 동적으로 폼을 추가해주고 싶어
 let idNum = 0;
 function createForm() {
@@ -31,8 +33,6 @@ function createForm() {
     const id = idNum;
     selectChild.addEventListener('change', (event) => selectChange(event, id));
 }
-
-// display none 같이 html 파일에 적고 (1개만 보이게)
 
 // select의 값에 따라 div#formContent의 내용을 바꿔주고싶어 (parent의 자식으로 추가)
 document.addEventListener('DOMContentLoaded', () => {
@@ -106,7 +106,7 @@ function addCheckBoxDiv(event) {
 
 function insertInitTextAnswer(newDiv, parent, cnt) {
     newDiv.id = 'childDiv' + cnt;
-    newDiv.style.color = "gray";
+    newDiv.style.color = 'gray';
     newDiv.style.fontsize = '15px';
     newDiv.innerHTML = "단답형 텍스트";
 
@@ -117,5 +117,19 @@ function insertInitTextAnswer(newDiv, parent, cnt) {
     newDiv.appendChild(hr);
     parent.appendChild(newDiv);
 }
+
+let settingBox = document.getElementById("setting");
+let notSettingBox = document.getElementById("notSetting");
+let settingButton = document.getElementById("settingButton");
+let questionButton = document.getElementById("questionButton");
+settingButton.addEventListener('click', () => {
+    settingBox.style.display = 'block';
+    notSettingBox.style.display = 'none';
+})
+
+questionButton.addEventListener('click', () => {
+    settingBox.style.display = 'none';
+    notSettingBox.style.display = 'block';
+});
 
 
