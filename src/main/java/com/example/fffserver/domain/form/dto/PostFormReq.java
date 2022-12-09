@@ -1,8 +1,8 @@
 package com.example.fffserver.domain.form.dto;
 
 import com.example.fffserver.domain.form.domain.entity.Form;
-import com.example.fffserver.domain.question.Question;
-import com.example.fffserver.domain.question.QuestionPostReq;
+import com.example.fffserver.domain.question.domain.entity.Question;
+import com.example.fffserver.domain.question.dto.QuestionPostReq;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -17,13 +17,13 @@ public class PostFormReq {
     private final Integer winnersNumber;
     private final List<QuestionPostReq> questionPostReqs;      // title, type
 
-    public PostFormReq(String title, String description, LocalDateTime startTime, LocalDateTime endTime, Integer winnersNumber, List<QuestionPostReq> questionMap) {
+    public PostFormReq(String title, String description, LocalDateTime startTime, LocalDateTime endTime, Integer winnersNumber, List<QuestionPostReq> questionPostReqs) {
         this.title = title;
         this.description = description;
         this.startTime = startTime;
         this.endTime = endTime;
         this.winnersNumber = winnersNumber;
-        this.questionPostReqs = questionMap;
+        this.questionPostReqs = questionPostReqs;
     }
 
     public String getTitle() {

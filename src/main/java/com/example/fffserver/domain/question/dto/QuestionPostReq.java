@@ -1,4 +1,4 @@
-package com.example.fffserver.domain.question;
+package com.example.fffserver.domain.question.dto;
 
 public class QuestionPostReq {
     private final String title;

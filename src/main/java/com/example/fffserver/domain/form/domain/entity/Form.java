@@ -2,7 +2,7 @@ package com.example.fffserver.domain.form.domain.entity;
 
 import com.example.fffserver.domain.common.BaseEntity;
 import com.example.fffserver.domain.form.domain.StatusType;
-import com.example.fffserver.domain.question.Question;
+import com.example.fffserver.domain.question.domain.entity.Question;
 import org.bson.types.ObjectId;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -58,5 +58,9 @@ public class Form extends BaseEntity {
 
     public ObjectId getId() {
         return id;
+    }
+
+    public List<Question> getQuestions() {
+        return questions;
     }
 }

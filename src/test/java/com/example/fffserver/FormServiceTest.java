@@ -2,7 +2,7 @@ package com.example.fffserver;
 
 import com.example.fffserver.domain.form.application.FormService;
 import com.example.fffserver.domain.form.domain.entity.Form;
-import com.example.fffserver.domain.question.Question;
+import com.example.fffserver.domain.question.domain.entity.Question;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
