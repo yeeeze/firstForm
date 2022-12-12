@@ -4,6 +4,7 @@ import com.example.fffserver.domain.form.application.FormService;
 import com.example.fffserver.domain.form.domain.FormRepository;
 import com.example.fffserver.domain.form.domain.entity.Form;
 import com.example.fffserver.domain.question.domain.entity.Question;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -25,8 +26,13 @@ class FormServiceTest {
     FormService formService;
 
     @BeforeEach
-    void before() {
+    void setUp() {
         this.formService = new FormService(formRepository);
+    }
+
+    @AfterEach
+    void tearDown() {
+        formService.deleteAll();
     }
 
     @Test
