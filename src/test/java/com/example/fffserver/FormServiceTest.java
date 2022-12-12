@@ -1,13 +1,14 @@
 package com.example.fffserver;
 
 import com.example.fffserver.domain.form.application.FormService;
+import com.example.fffserver.domain.form.domain.FormRepository;
 import com.example.fffserver.domain.form.domain.entity.Form;
 import com.example.fffserver.domain.question.domain.entity.Question;
-import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.autoconfigure.data.mongo.DataMongoTest;
 
 import java.time.LocalDateTime;
 import java.time.Month;
@@ -16,15 +17,16 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-@SpringBootTest
+@DataMongoTest
 class FormServiceTest {
 
     @Autowired
+    FormRepository formRepository;
     FormService formService;
 
-    @AfterEach
-    void afterRemove() {
-        formService.deleteAll();
+    @BeforeEach
+    void before() {
+        this.formService = new FormService(formRepository);
     }
 
     @Test

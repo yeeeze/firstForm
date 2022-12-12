@@ -29,6 +29,9 @@ jobs:
         run: echo "${{ secrets.PROPERTIES }}" > ./src/main/resources/application.properties
         shell: bash
 
+      - name: Start MongoDB
+        uses: supercharge/mongodb-github-action@1.8.0
+
       - name: Build with Gradle
         run: ./gradlew build -x test
 
