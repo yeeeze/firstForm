@@ -33,7 +33,11 @@ jobs:
         uses: supercharge/mongodb-github-action@1.8.0
 
       - name: Start Redis
-        uses: supercharge/redis-github-action@1.4.0
+        uses: shogo82148/actions-setup-redis@v1
+        with:
+          redis-version: '6.x'
+      - name: Run Redis
+        run: redis-cli ping
 
       - name: Build with Gradle
         run: ./gradlew build -x test
