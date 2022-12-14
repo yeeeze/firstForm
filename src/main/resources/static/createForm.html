@@ -91,10 +91,12 @@
         <div class="card" style="margin-top: 10px; margin-bottom: 10px">
             <h5 class="card-header">설정</h5>
             <div class="card-body" style="padding: 30px">
+                <!--    TODO : 시작 시간이 과거일 경우 체크 안되게 validate-->
                 <label for="startTime" class="form-label">시작 시간</label>
                 <br>
                 <input type="datetime-local" id="startTime">
                 <hr>
+                <!--    TODO : 마감시간 지났을 경우 체크 안되게 validate-->
                 <label for="endTime" class="form-label">마감 시간</label>
                 <br>
                 <input type="datetime-local" id="endTime">
