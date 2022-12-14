@@ -25,7 +25,7 @@ public class PostAnswerListRequest {
         this.content = content;
     }
 
-    public List<Answer> toAnswerList(String formId) {
+    public List<Answer> toAnswerListMappedForm(String formId) {
         return content.stream()
                 .map(c -> new Answer(c, new ObjectId(formId)))
                 .collect(Collectors.toList());

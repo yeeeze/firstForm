@@ -3,6 +3,7 @@ package com.example.fffserver.domain.form.domain.entity;
 import com.example.fffserver.domain.common.BaseEntity;
 import com.example.fffserver.domain.form.domain.StatusType;
 import com.example.fffserver.domain.question.domain.entity.Question;
+import lombok.Getter;
 import org.bson.types.ObjectId;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -12,6 +13,7 @@ import javax.persistence.Id;
 import java.time.LocalDateTime;
 import java.util.List;
 
+@Getter
 @Document("form")
 public class Form extends BaseEntity {
 
@@ -54,13 +56,5 @@ public class Form extends BaseEntity {
         this.winnersNumber = winnersNumber;
         this.questions = questions;
         this.status = StatusType.ACTIVE;
-    }
-
-    public ObjectId getId() {
-        return id;
-    }
-
-    public List<Question> getQuestions() {
-        return questions;
     }
 }

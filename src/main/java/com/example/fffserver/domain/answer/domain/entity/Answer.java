@@ -23,7 +23,7 @@ public class Answer extends BaseEntity {
         this.formId = formId;
     }
 
-    public void setQuestionId(ObjectId questionId) {
+    public void mappedQuestionId(ObjectId questionId) {
         this.questionId = questionId;
     }
 
