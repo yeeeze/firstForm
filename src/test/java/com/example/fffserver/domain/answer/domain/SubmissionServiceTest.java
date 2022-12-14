@@ -74,7 +74,7 @@ class SubmissionServiceTest {
             workers.forEach(Thread::start);
             countDownLatch.await();
 
-            Awaitility.await().atMost(Duration.ofSeconds(10))
+            Awaitility.await().atMost(Duration.ofMinutes(10))
                     .untilAsserted(() -> {
                         Long waitingQueueSize = submissionService.getWaitingQueueSize(event);
                         assertThat(waitingQueueSize).isEqualTo(user - winner);
@@ -119,7 +119,7 @@ class SubmissionServiceTest {
             countDownLatch1.await();
             countDownLatch2.await();
 
-            Awaitility.await().atMost(Duration.ofSeconds(10))
+            Awaitility.await().atMost(Duration.ofMinutes(10))
                     .untilAsserted(() -> {
                         Long waitingQueueSize1 = submissionService.getWaitingQueueSize(event1);
                         Long waitingQueueSize2 = submissionService.getWaitingQueueSize(event2);

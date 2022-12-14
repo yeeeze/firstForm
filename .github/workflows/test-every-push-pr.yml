@@ -36,8 +36,6 @@ jobs:
         uses: shogo82148/actions-setup-redis@v1
         with:
           redis-version: '6.x'
-      - name: Run Redis
-        run: redis-cli ping
 
       - name: Build with Gradle
         run: ./gradlew build -x test
