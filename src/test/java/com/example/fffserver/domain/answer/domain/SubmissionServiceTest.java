@@ -15,6 +15,7 @@ import org.springframework.data.redis.core.RedisTemplate;
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.Month;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 import java.util.concurrent.CountDownLatch;
@@ -33,6 +34,9 @@ class SubmissionServiceTest {
     @Autowired
     FormRepository formRepository;
 
+
+    private List<String> keys = new ArrayList<>();
+
     @BeforeEach
     void setUp() {
     }
@@ -40,6 +44,9 @@ class SubmissionServiceTest {
     @AfterEach
     void tearDown() {
         formRepository.deleteAll();
+        for (String key : keys) {
+            redisTemplate.delete(key);
+        }
     }
 
     @Nested
@@ -57,6 +64,7 @@ class SubmissionServiceTest {
 
             form = new Form(LocalDateTime.now(), LocalDateTime.of(2022, Month.DECEMBER, 30, 23, 59), winner, List.of(new Question("유저 이름", "TEXT")));
             formRepository.insert(form);
+            keys.add(form.getId().toString());
 
             Event event = EventFactory.createfromForm(form);
 
@@ -71,12 +79,6 @@ class SubmissionServiceTest {
                         Long waitingQueueSize = submissionService.getWaitingQueueSize(event);
                         assertThat(waitingQueueSize).isEqualTo(user - winner);
                     });
-        }
-
-        @Test
-        @DisplayName("redis tearDown")
-        void tearDownRedisData() {
-            redisTemplate.opsForZSet().remove(form.getId().toString(), 0, -1);
         }
     }
 
@@ -97,9 +99,11 @@ class SubmissionServiceTest {
 
             formFirst = new Form(LocalDateTime.now(), LocalDateTime.of(2022, Month.DECEMBER, 30, 23, 59), winner, List.of(new Question("유저 이름", "TEXT")));
             formRepository.insert(formFirst);
+            keys.add(formFirst.getId().toString());
 
             formSecond = new Form(LocalDateTime.now(), LocalDateTime.of(2022, Month.DECEMBER, 30, 23, 59), winner, List.of(new Question("유저 이름", "TEXT")));
             formRepository.insert(formSecond);
+            keys.add(formSecond.getId().toString());
 
             Event event1 = EventFactory.createfromForm(formFirst);
             Event event2 = EventFactory.createfromForm(formSecond);
@@ -123,13 +127,6 @@ class SubmissionServiceTest {
                         assertThat(waitingQueueSize1).isEqualTo(user - winner);
                         assertThat(waitingQueueSize2).isEqualTo(user - winner);
                     });
-        }
-
-        @Test
-        @DisplayName("redis tearDown")
-        void tearDownRedisData() {
-            redisTemplate.opsForZSet().remove(formFirst.getId().toString(), 0, -1);
-            redisTemplate.opsForZSet().remove(formSecond.getId().toString(), 0, -1);
         }
     }
 
