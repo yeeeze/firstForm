@@ -5,7 +5,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
-import java.util.List;
+import java.util.Map;
 
 @Slf4j
 class StreamTest {
@@ -16,10 +16,10 @@ class StreamTest {
         @Test
         @DisplayName("stream")
         void streamOrderTest() {
-            List<Integer> list = List.of(1, 2, 3, 4, 5);
+            Map<String, Integer> map = Map.of("1", 1, "2", 2, "3", 3, "4", 4, "5", 5);
 
             log.info("streamTest 시작");
-            list.forEach(integer -> {
+            map.entrySet().forEach(integer -> {
                 log.info(integer + " 시작");
                 log.info(integer.toString());
                 log.info(integer + " 끝");
@@ -29,10 +29,10 @@ class StreamTest {
         @Test
         @DisplayName("parallelStream")
         void parallelStreamOrderTest() {
-            List<Integer> list = List.of(1, 2, 3, 4, 5);
+            Map<String, Integer> map = Map.of("1", 1, "2", 2, "3", 3, "4", 4, "5", 5);
 
             log.info("parallelStreamTest 시작");
-            list.parallelStream().forEach(integer -> {
+            map.entrySet().parallelStream().forEach(integer -> {
                 log.info(integer + " 시작");
                 log.info(integer.toString());
                 log.info(integer + " 끝");
