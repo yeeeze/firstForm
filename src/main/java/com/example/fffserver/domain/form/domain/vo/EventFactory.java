@@ -4,14 +4,14 @@ import com.example.fffserver.domain.form.domain.entity.Form;
 import org.bson.types.ObjectId;
 import org.springframework.stereotype.Component;
 
+import java.util.HashMap;
 import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.stream.Stream;
+import java.util.Set;
 
 @Component
 public class EventFactory {
 
-    private static final Map<ObjectId, Event> eventMapCache = new ConcurrentHashMap<>();
+    private static final Map<ObjectId, Event> eventMapCache = new HashMap<>();
 
     public static Event createfromForm(Form form) {
         ObjectId formId = form.getId();
@@ -23,8 +23,8 @@ public class EventFactory {
         return event;
     }
 
-    public Stream<Map.Entry<ObjectId, Event>> events() {
-        return eventMapCache.entrySet().parallelStream();
+    public Set<Map.Entry<ObjectId, Event>> events() {
+        return Set.copyOf(eventMapCache.entrySet());
     }
 
     public void removeEvent(ObjectId formId) {

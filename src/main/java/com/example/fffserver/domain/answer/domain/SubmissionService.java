@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -50,16 +51,16 @@ public class SubmissionService {
 
     // 대기열 순번 안내
     public void getOrder() {
-        eventFactory.events().forEach(objectIdEventEntry -> {
-            Event event = objectIdEventEntry.getValue();
+        eventFactory.events().parallelStream().forEach(objectIdEventEntry -> {
+            String eventId = objectIdEventEntry.getValue().getFormId().toString();
 
-            Set<String> waitingQueue = redisTemplate.opsForZSet().range(event.getFormId().toString(), FIRST_INDEX, LAST_INDEX);
+            Set<String> waitingQueue = redisTemplate.opsForZSet().range(eventId, FIRST_INDEX, LAST_INDEX);
             if (waitingQueue == null) {
                 return;
             }
             for (String userName : waitingQueue) {
-                Long rank = redisTemplate.opsForZSet().rank(event.getFormId().toString(), userName);
-                log.info("{} 이벤트의 {}님의 현재 대기번호는 {}입니다.",event.getFormId().toString(), userName, rank);
+                Long rank = redisTemplate.opsForZSet().rank(eventId, userName);
+                log.info("{} 이벤트의 {}님의 현재 대기번호는 {}입니다.",eventId, userName, rank);
             }
         });
     }
@@ -68,26 +69,30 @@ public class SubmissionService {
     // DB insert
     // 대기열, 질문 map에서 삭제
     public void enter() {
-        eventFactory.events().forEach(objectIdEventEntry -> {
-            Event event = objectIdEventEntry.getValue();
+        eventFactory.events().stream()
+                .map(Map.Entry::getValue)
+                .parallel()
+                .forEach(event -> {
+                    String eventId = event.getFormId().toString();
+                    int limitCount = event.getLimitCount();
 
-            Set<String> waitingQueue = redisTemplate.opsForZSet().range(event.getFormId().toString(), FIRST_INDEX, event.getLimitCount());
-            if (waitingQueue == null) {
-                return;
-            }
-            for (String userName : waitingQueue) {
-                if (isEnd(event)) {
-                    eventFactory.removeEvent(event.getFormId());
-//                    redisTemplate.opsForZSet().removeRange(event.getFormId().toString(), FIRST_INDEX, LAST_INDEX);
-                    return;
-                }
-                event.decrease();
-                redisTemplate.opsForZSet().remove(event.getFormId().toString(), userName);
-                List<Answer> answerList = userAnswerMap.get(event.getFormId().toString() + userName);
-                answerService.mappedQuestionAndInsert(answerList);
-                log.info("{}님의 응답 제출이 완료됐습니다. 이벤트: {}, 응답: {}", userName, event.getFormId().toString(), answerList);
-            }
-        });
+                    Set<String> waitingQueue = redisTemplate.opsForZSet().range(eventId, FIRST_INDEX, limitCount);
+                    if (waitingQueue == null) {
+                        return;
+                    }
+                    for (String userName : waitingQueue) {
+                        if (isEnd(event)) {
+                            eventFactory.removeEvent(event.getFormId());
+//                          redisTemplate.opsForZSet().removeRange(event.getFormId().toString(), FIRST_INDEX, LAST_INDEX);
+                            return;
+                        }
+                        event.decrease();
+                        redisTemplate.opsForZSet().remove(eventId, userName);
+                        List<Answer> answerList = userAnswerMap.get(eventId + userName);
+                        answerService.mappedQuestionAndInsert(answerList);
+                        log.info("{}님의 응답 제출이 완료됐습니다. 이벤트: {}, 응답: {}", userName, eventId, answerList);
+                    }
+                });
     }
 
     // 선착순 종료 체크
