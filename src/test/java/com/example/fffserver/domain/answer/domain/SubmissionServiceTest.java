@@ -6,6 +6,7 @@ import com.example.fffserver.domain.form.domain.entity.Form;
 import com.example.fffserver.domain.form.domain.vo.Event;
 import com.example.fffserver.domain.form.domain.vo.EventFactory;
 import com.example.fffserver.domain.question.domain.entity.Question;
+import lombok.extern.slf4j.Slf4j;
 import org.awaitility.Awaitility;
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +26,7 @@ import java.util.stream.Stream;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest
+@Slf4j
 class SubmissionServiceTest {
 
     @Autowired
@@ -68,7 +70,7 @@ class SubmissionServiceTest {
 
             Event event = EventFactory.createfromForm(form);
 
-            List<Thread> workers = Stream.generate(() -> new Thread(new Woker(countDownLatch, event)))
+            List<Thread> workers = Stream.generate(() -> new Thread(new Worker(countDownLatch, event)))
                     .limit(user)
                     .collect(Collectors.toList());
             workers.forEach(Thread::start);
@@ -90,7 +92,7 @@ class SubmissionServiceTest {
         Form formSecond;
 
         @Test
-        @DisplayName("각각의 이벤트는 충돌되지 않고, 병렬 처리되어야한다.")
+        @DisplayName("각각의 이벤트는 별도의 쓰레드에서 병렬 처리되어야한다.")
         void event() throws InterruptedException {
             final int user = 100;
             final int winner = 30;
@@ -108,10 +110,10 @@ class SubmissionServiceTest {
             Event event1 = EventFactory.createfromForm(formFirst);
             Event event2 = EventFactory.createfromForm(formSecond);
 
-            List<Thread> workers1 = Stream.generate(() -> new Thread(new Woker(countDownLatch1, event1)))
+            List<Thread> workers1 = Stream.generate(() -> new Thread(new Worker(countDownLatch1, event1)))
                     .limit(user)
                     .collect(Collectors.toList());
-            List<Thread> workers2 = Stream.generate(() -> new Thread(new Woker(countDownLatch2, event2)))
+            List<Thread> workers2 = Stream.generate(() -> new Thread(new Worker(countDownLatch2, event2)))
                     .limit(user)
                     .collect(Collectors.toList());
             workers1.forEach(Thread::start);
@@ -130,12 +132,12 @@ class SubmissionServiceTest {
         }
     }
 
-    private class Woker implements Runnable {
+    private class Worker implements Runnable {
 
         private CountDownLatch countDownLatch;
         private Event event;
 
-        public Woker(CountDownLatch countDownLatch, Event event) {
+        public Worker(CountDownLatch countDownLatch, Event event) {
             this.countDownLatch = countDownLatch;
             this.event = event;
         }
@@ -147,4 +149,6 @@ class SubmissionServiceTest {
             countDownLatch.countDown();
         }
     }
+
+    // TODO : 처리 시간 단축 테스트
 }
