@@ -43,6 +43,7 @@ function createQuestions() {
     for (let i = 0; i <= idNum; i++) {
         let questionInput = document.getElementById("question" + i);
         let question = {};
+        let contents = [];
         question.title = questionInput.value;
 
         let fc = document.getElementById("formContent" + i);
@@ -53,6 +54,13 @@ function createQuestions() {
             question.type = "CHECKBOX";
         }
 
+        let checkboxChildNodeCnt = fc.childNodes[1].childNodes[1].childNodes[1].childNodes[5].childElementCount;
+        for (let j = 0; j < checkboxChildNodeCnt - 1; j++) {
+            const contentValue = fc.childNodes[1].childNodes[1].childNodes[1].childNodes[5].childNodes[j].querySelector('input.form-control').value;
+            contents.push(contentValue);
+        }
+
+        question.checkboxList = contents;
         questionList.push(question);
     }
     return questionList;

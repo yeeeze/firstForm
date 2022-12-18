@@ -1,5 +1,3 @@
-// TODO checkbox 상세 옵션 DB에 저장 추가해야함..
-
 // +버튼을 누르면 동적으로 폼을 추가해주고 싶어
 let idNum = 0;
 function createForm() {
@@ -69,7 +67,7 @@ function selectChange(event, cnt) {
         parent.appendChild(newDiv);
     } else {
         newDiv.innerHTML =
-            "<div class=\"input-group mb-3\" class=\"col-8\" id=\"firstCheckbox" + cnt + "\" style=\"width: 50%;\">\n"+
+            "<div class=\"input-group mb-3\" class=\"col-8\" id=\"addCheckBoxDiv" + 1 + "\" style=\"width: 50%;\">\n"+
             "    <div class=\"input-group-text\">\n" +
             "        <input class=\"form-check-input mt-0\" type=\"checkbox\" value=\"\" aria-label=\"Checkbox for following text input\">\n" +
             "    </div>\n" +
@@ -86,7 +84,7 @@ function selectChange(event, cnt) {
     }
 }
 
-let addCheckBoxCnt = 0;
+let addCheckBoxCnt = 1;
 function addCheckBoxDiv(event) {
     let inputButtonId = event.currentTarget.id;
 
@@ -94,13 +92,13 @@ function addCheckBoxDiv(event) {
     let newDiv = document.createElement("div");
     addCheckBoxCnt++;
     newDiv.id = 'addCheckBoxDiv' + addCheckBoxCnt;
+    newDiv.className = 'input-group mb-3';
+    newDiv.style.width = '50%';
     newDiv.innerHTML =
-        "<div class=\"input-group mb-3\" class=\"col-8\" style=\"width: 50%;\">\n"+
-        "    <div class=\"input-group-text\">\n" +
-        "        <input class=\"form-check-input mt-0\" type=\"checkbox\" value=\"\" aria-label=\"Checkbox for following text input\">\n" +
-        "    </div>\n" +
-        "    <input type=\"text\" class=\"form-control\" aria-label=\"Text input with checkbox\">\n" +
-        "</div>";
+        "<div class=\"input-group-text\">\n" +
+        "   <input class=\"form-check-input mt-0\" type=\"checkbox\" value=\"\" aria-label=\"Checkbox for following text input\">\n" +
+        "</div>\n" +
+        "<input type=\"text\" class=\"form-control\" aria-label=\"Text input with checkbox\">";
     lastCheckbox.before(newDiv);
 }
 
