@@ -15,7 +15,7 @@ public class PostFormReq {
     private final LocalDateTime startTime;
     private final LocalDateTime endTime;
     private final Integer winnersNumber;
-    private final List<QuestionPostReq> questionPostReqs;      // title, type
+    private final List<QuestionPostReq> questionPostReqs;      // title, type, content
 
     public PostFormReq(String title, String description, LocalDateTime startTime, LocalDateTime endTime, Integer winnersNumber, List<QuestionPostReq> questionPostReqs) {
         this.title = title;
@@ -48,7 +48,7 @@ public class PostFormReq {
 
     public Form toForm() {
         List<Question> questions = questionPostReqs.stream()
-                .map(questionPostReq -> new Question(questionPostReq.getTitle(), questionPostReq.getType()))
+                .map(QuestionPostReq::toQuestion)
                 .collect(Collectors.toList());
         return new Form(startTime, endTime, winnersNumber, questions);
     }
