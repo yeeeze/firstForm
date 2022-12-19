@@ -78,14 +78,14 @@ function selectChange(event, cnt) {
             "        <input class=\"form-check-input mt-0\" type=\"checkbox\" value=\"\" aria-label=\"Checkbox for following text input\">\n" +
             "    </div>\n" +
             "    <input type=\"button\" id=\"" + cnt + "\" class=\"form-control\" aria-label=\"Text input with checkbox\" value=\"옵션 추가\" " +
-            "onclick='addCheckBoxDiv(event)' style=\"color: gray; text-align: left\">" +
+            "onclick='addCheckBoxContentDiv(event)' style=\"color: gray; text-align: left\">" +
             "</div>";
         parent.appendChild(newDiv);
     }
 }
 
 let addCheckBoxCnt = 1;
-function addCheckBoxDiv(event) {
+function addCheckBoxContentDiv(event) {
     let inputButtonId = event.currentTarget.id;
 
     let lastCheckbox = document.getElementById("lastCheckbox" + inputButtonId);

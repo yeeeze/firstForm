@@ -50,6 +50,6 @@ public class PostFormReq {
         List<Question> questions = questionPostReqs.stream()
                 .map(QuestionPostReq::toQuestion)
                 .collect(Collectors.toList());
-        return new Form(startTime, endTime, winnersNumber, questions);
+        return new Form(title, description, startTime, endTime, winnersNumber, questions);
     }
 }
