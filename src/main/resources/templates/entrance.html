@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>입장 페이지</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+</head>
+<body>
+  <div class="px-4 py-5 my-5 text-center">
+    <h1 class="display-5 fw-bold">선착순 응답 폼 참여</h1>
+    <div class="col-lg-6 mx-auto">
+      <p class="lead mb-4">선착순 응답 참여 페이지입니다. 시작 시간이 되면 하단의 버튼을 눌러 입장하시면 됩니다. 시작 시간 전에는 입장이 불가능합니다. 행운을 빕니다!</p>
+      <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+        <button type="button" id="enterBtn" class="btn btn-primary btn-lg px-4 gap-3">입장</button>
+        <button type="button" id="timeCheckBtn" class="btn btn-outline-secondary btn-lg px-4">남은 시간 확인</button>
+      </div>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+  <script th:inline="javascript">
+    let formId = [[${formId}]];
+    let winner = [[${winnersNum}]];
+    let startTime = [[${startTime}]];
+    let startTimeToDate = new Date(startTime.toString() + '+09:00');
+    let host = "http://localhost:8080/api/v1/"
+    let enter = document.getElementById("enterBtn");
+    let timeCheck = document.getElementById("timeCheckBtn");
+
+    enter.addEventListener('click', () => {
+      if (Date.now() < startTimeToDate) {
+          let timeStr = startTime.toString();
+          timeStr = timeStr.substring(0, timeStr.length - 3);
+          let newStr = timeStr.replace('T', " ");
+          alert(newStr + " 이후에 입장 가능합니다.");
+      } else {
+          location.replace(host + "form/" + formId + "/enter");
+      }
+    })
+
+    timeCheck.addEventListener('click', () => {
+
+    })
+  </script>
+</body>
+</html>
