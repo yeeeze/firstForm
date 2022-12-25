@@ -15,6 +15,8 @@
         <button type="button" id="timeCheckBtn" class="btn btn-outline-secondary btn-lg px-4">남은 시간 확인</button>
       </div>
     </div>
+    <br>
+    <h2 id="remainTime"></h2>
   </div>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
   <script th:inline="javascript">
@@ -28,18 +30,48 @@
 
     enter.addEventListener('click', () => {
       if (Date.now() < startTimeToDate) {
-          let timeStr = startTime.toString();
-          timeStr = timeStr.substring(0, timeStr.length - 3);
-          let newStr = timeStr.replace('T', " ");
-          alert(newStr + " 이후에 입장 가능합니다.");
+        let start = dateToString(startTime);
+        alert(start + " 이후에 입장 가능합니다.");
       } else {
           location.replace(host + "form/" + formId + "/enter");
       }
     })
 
+    let isChecked = false;
+    let interval;
     timeCheck.addEventListener('click', () => {
-
+      let remainTimeH2 = document.getElementById('remainTime');
+      if (isChecked) {
+        clearInterval(interval);
+        isChecked = false;
+        timeCheck.innerText = "남은 시간 확인";
+        remainTimeH2.hidden = true;
+      } else {
+        isChecked = true;
+        timeCheck.innerText = "남은 시간 숨기기";
+        remainTimeH2.hidden = false;
+        interval = setInterval(() => {
+          console.log(checkRemainTime());
+          remainTimeH2.innerText = checkRemainTime()
+        }, 1000);
+      }
     })
+
+    function checkRemainTime() {
+      let remainTime = startTimeToDate - Date.now();
+
+      const diffDay = String(Math.floor(remainTime / (1000 * 60 * 60 * 24)));
+      const diffHour = String(Math.floor((remainTime / (1000 * 60 * 60)) % 24)).padStart(2, "0");
+      const diffMin = String(Math.floor((remainTime / (1000 * 60)) % 60)).padStart(2, "0");
+      const diffSec = String(Math.floor(remainTime / 1000 % 60)).padStart(2,"0");
+      return diffDay + "일 " + diffHour + "시간 " + diffMin + "분 " + diffSec + "초";
+    }
+
+    function dateToString(timeStr) {
+      let string = timeStr.toString();
+      string = string.substring(0, string.length - 3);
+      return string.replace('T', " ");
+    }
   </script>
 </body>
 </html>
