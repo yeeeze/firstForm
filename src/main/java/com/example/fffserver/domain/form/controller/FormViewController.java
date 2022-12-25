@@ -3,11 +3,14 @@ package com.example.fffserver.domain.form.controller;
 import com.example.fffserver.domain.form.application.FormService;
 import com.example.fffserver.domain.form.domain.entity.Form;
 import com.example.fffserver.domain.question.domain.entity.Question;
+import com.example.fffserver.global.exception.BusinessException;
+import com.example.fffserver.global.exception.ExceptionCode;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Controller
@@ -37,6 +40,10 @@ public class FormViewController {
     @GetMapping("/api/v1/form/{formId}/enter")
     public String viewSubmitPage(@PathVariable String formId, Model model) {
         Form form = formService.findById(formId);
+        if (LocalDateTime.now().isBefore(form.getStartTime())) {
+            throw new BusinessException(ExceptionCode.BEFORE_START);
+        }
+
         List<Question> questions = form.getQuestions();
         model.addAttribute("form", form);
         model.addAttribute("formId", form.getId().toString());
