@@ -19,7 +19,6 @@ public class QueueScheduler {
 
     @Scheduled(fixedDelay = 1000)
     private void eventScheduler() {
-        log.info("{} 스케쥴러 동기화", Thread.currentThread().getName());
         submissionService.enter();
         submissionService.getOrder();
     }

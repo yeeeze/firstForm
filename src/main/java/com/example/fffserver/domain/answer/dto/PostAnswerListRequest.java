@@ -1,27 +1,20 @@
 package com.example.fffserver.domain.answer.dto;
 
 import com.example.fffserver.domain.answer.domain.entity.Answer;
+import lombok.Getter;
 import org.bson.types.ObjectId;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Getter
 public class PostAnswerListRequest {
 
+    private String userId;
     private List<String> content;
 
-    public PostAnswerListRequest() {
-    }
-
-    public PostAnswerListRequest(List<String> content) {
-        this.content = content;
-    }
-
-    public List<String> getContent() {
-        return content;
-    }
-
-    public void setContent(List<String> content) {
+    public PostAnswerListRequest(String userId, List<String> content) {
+        this.userId = userId;
         this.content = content;
     }
 

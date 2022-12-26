@@ -32,8 +32,6 @@ public class Form extends BaseEntity {
 
     private List<Question> questions;
 
-    private String url;
-
     @Enumerated(EnumType.STRING)
     private StatusType status;
 
@@ -56,5 +54,9 @@ public class Form extends BaseEntity {
         this.winnersNumber = winnersNumber;
         this.questions = questions;
         this.status = StatusType.ACTIVE;
+    }
+
+    public void changeEndTime(LocalDateTime endTime) {
+        this.endTime = endTime;
     }
 }
