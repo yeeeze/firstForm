@@ -44,6 +44,10 @@ public class FormViewController {
             throw new BusinessException(ExceptionCode.BEFORE_START);
         }
 
+        if (LocalDateTime.now().isAfter(form.getEndTime())) {
+            throw new BusinessException(ExceptionCode.AFTER_END);
+        }
+
         List<Question> questions = form.getQuestions();
         model.addAttribute("form", form);
         model.addAttribute("formId", form.getId().toString());
