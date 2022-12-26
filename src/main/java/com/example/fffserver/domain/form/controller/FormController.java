@@ -1,8 +1,8 @@
 package com.example.fffserver.domain.form.controller;
 
 import com.example.fffserver.domain.form.application.FormService;
-import com.example.fffserver.domain.form.dto.PostFormReq;
 import com.example.fffserver.domain.form.domain.entity.Form;
+import com.example.fffserver.domain.form.dto.PostFormReq;
 import com.example.fffserver.domain.question.application.QuestionService;
 import com.example.fffserver.domain.question.domain.entity.Question;
 import org.springframework.http.ResponseEntity;
@@ -23,6 +23,9 @@ public class FormController {
         this.questionService = questionService;
     }
 
+    /**
+     * 신규 Form 생성
+     */
     @PostMapping("/api/v1/form")
     public ResponseEntity<String> createForm(@RequestBody PostFormReq postFormReq) {
         Form form = postFormReq.toForm();
@@ -33,6 +36,4 @@ public class FormController {
 
         return ResponseEntity.ok().body(formId);
     }
-
-//    @GetMapping("/api/v1/form/{formId}")
 }
