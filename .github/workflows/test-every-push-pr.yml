@@ -29,6 +29,16 @@ jobs:
         run: echo "${{ secrets.PROPERTIES }}" > ./src/main/resources/application.properties
         shell: bash
 
+      # application-test.properties
+      - name: create application-test.properties
+        run:
+          touch ./src/test/resources/application.properties
+        shell: bash
+
+      - name: deliver application-test.properties
+        run: echo "${{ secrets.TEST_PROPERTIES }}" > ./src/test/resources/application.properties
+        shell: bash
+
       - name: Start MongoDB
         uses: supercharge/mongodb-github-action@1.8.0
 
