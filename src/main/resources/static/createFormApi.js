@@ -1,8 +1,12 @@
 let host = "http://localhost:8080/api/v1/"
 
 const postFormButton = document.querySelector("#postFormButton");
+let myModal = new bootstrap.Modal(document.getElementById('myModal'), {
+    keyboard: false
+})
 postFormButton.addEventListener("click", () => {
     if (checkSetting()) {
+        myModal.show();
         fetch(host + "form", {
             method: "POST",
             headers: {
