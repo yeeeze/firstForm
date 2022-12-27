@@ -130,6 +130,10 @@ questionButton.addEventListener('click', () => {
     notSettingBox.style.display = 'block';
 });
 
+/**
+ * 설정값 validation
+ */
+
 function numberMax(e) {
     if (e.value > 10000 || e.value < 1) {
         if (document.getElementById('alert') === null) {

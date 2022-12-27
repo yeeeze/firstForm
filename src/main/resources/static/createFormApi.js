@@ -5,6 +5,10 @@ let myModal = new bootstrap.Modal(document.getElementById('myModal'), {
     keyboard: false
 })
 postFormButton.addEventListener("click", () => {
+    if (!inputValidation()) {
+        return;
+    }
+
     if (checkSetting()) {
         myModal.show();
         fetch(host + "form", {
@@ -36,6 +40,16 @@ function checkSetting() {
     if (!document.getElementById("startTime").value ||
         !document.getElementById("winnersNumber").value) {
         alert("설정값은 필수입니다. 설정값 추가 후 다시 시도해주세요.");
+        return false;
+    }
+    return true;
+}
+
+function inputValidation() {
+    let start = new Date(document.getElementById('startTime').value).getTime();
+    let now = new Date().getTime();
+    if (start <= now) {
+        alertBoot("시작시간은 현재 시간 이후부터 가능합니다.", 'danger');
         return false;
     }
     return true;
