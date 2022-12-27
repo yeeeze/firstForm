@@ -32,8 +32,9 @@ jobs:
       # application-test.properties
       - name: create application-test.properties
         run:
-          mkdir -p ./src/test/resources |
-          touch ./src/test/resources/application.properties
+          mkdir ./src/test/resources |
+          cd ./src/test/resources |
+          touch application.properties
         shell: bash
 
       - name: deliver application-test.properties
