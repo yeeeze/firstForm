@@ -130,4 +130,26 @@ questionButton.addEventListener('click', () => {
     notSettingBox.style.display = 'block';
 });
 
+function numberMax(e) {
+    if (e.value > 10000 || e.value < 1) {
+        if (document.getElementById('alert') === null) {
+            alertBoot("당첨자 수는 1명 이상 1만명 이하로 입력해주세요.", 'danger');
+        }
+    } else {
+        if (document.getElementById('alert') != null) {
+            document.getElementById('alert').remove();
+        }
+    }
+}
 
+const alertBoot = (message, type) => {
+    const wrapper = document.createElement('div')
+    wrapper.innerHTML = [
+        `<div id="alert" class="alert alert-${type} alert-dismissible" role="alert">`,
+        `   <div>${message}</div>`,
+        '   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>',
+        '</div>'
+    ].join('')
+
+    document.getElementById('setting').appendChild(wrapper);
+}

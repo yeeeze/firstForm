@@ -103,7 +103,7 @@
                 <label for="winnersNumber" class="form-label">당첨자 수
                     <p style="font-size: small; color: gray; margin-top: 5px">최대 1만명까지 가능합니다.</p>
                 </label>
-                <input type="number" class="form-control form-control" id="winnersNumber" max="100000" min="0" step="1" placeholder="명" style="width: 100px;">
+                <input oninput="numberMax(this)" type="number" class="form-control form-control" id="winnersNumber" max="10000" min="1" step="1" placeholder="명" style="width: 100px;">
             </div>
         </div>
     </section>
