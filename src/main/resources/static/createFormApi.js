@@ -34,7 +34,6 @@ postFormButton.addEventListener("click", () => {
 
 function checkSetting() {
     if (!document.getElementById("startTime").value ||
-        !document.getElementById("endTime").value ||
         !document.getElementById("winnersNumber").value) {
         alert("설정값은 필수입니다. 설정값 추가 후 다시 시도해주세요.");
         return false;

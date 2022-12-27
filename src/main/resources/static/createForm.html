@@ -50,8 +50,9 @@
                 <li><a href="#" class="nav-link px-2 link-dark" id="settingButton">설정</a></li>
             </ul>
 
+<!--            data-bs-toggle="modal"-->
             <div class="col-md-3 text-end">
-                <button id="postFormButton" type="button" class="btn btn-warning" name="postFormReq" data-bs-toggle="modal" data-bs-target="#myModal">보내기</button>
+                <button id="postFormButton" type="button" class="btn btn-warning" name="postFormReq" data-bs-target="#myModal">보내기</button>
             </div>
 
             <!-- Modal -->
@@ -95,13 +96,12 @@
                 <br>
                 <input type="datetime-local" id="startTime">
                 <hr>
-                <!--    TODO : 마감시간 지났을 경우 체크 안되게 validate-->
                 <label for="endTime" class="form-label">마감 시간</label>
                 <br>
-                <input type="datetime-local" id="endTime">
+                <p type="datetime-local" id="endTime">선착순이 마감되면 자동으로 응답 작성 페이지의 접속이 제한됩니다.</p>
                 <hr>
                 <label for="winnersNumber" class="form-label">당첨자 수
-                    <p style="font-size: small; color: gray; margin-top: 5px">최대 10만명까지 가능합니다.</p>
+                    <p style="font-size: small; color: gray; margin-top: 5px">최대 1만명까지 가능합니다.</p>
                 </label>
                 <input type="number" class="form-control form-control" id="winnersNumber" max="100000" min="0" step="1" placeholder="명" style="width: 100px;">
             </div>
