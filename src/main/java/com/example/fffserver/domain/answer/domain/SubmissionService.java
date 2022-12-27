@@ -19,6 +19,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.TimeUnit;
 
 @Slf4j
 @Service
@@ -103,7 +104,7 @@ public class SubmissionService {
                         if (isEnd(event)) {
                             formService.changeEndTime(LocalDateTime.now(), eventId);
                             eventFactory.removeEvent(event.getFormId());
-//                            redisTemplate.opsForZSet().removeRange(event.getFormId().toString(), FIRST_INDEX, LAST_INDEX);
+                            redisTemplate.expire(event.getFormId().toString(), 3, TimeUnit.DAYS);
                             return;
                         }
                         event.decrease();
