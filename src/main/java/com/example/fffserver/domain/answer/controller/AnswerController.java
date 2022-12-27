@@ -1,5 +1,6 @@
 package com.example.fffserver.domain.answer.controller;
 
+import com.example.fffserver.domain.answer.application.AnswerService;
 import com.example.fffserver.domain.answer.domain.SubmissionService;
 import com.example.fffserver.domain.answer.domain.entity.Answer;
 import com.example.fffserver.domain.answer.dto.PostAnswerListRequest;
@@ -16,10 +17,12 @@ import java.util.UUID;
 public class AnswerController {
 
     // TODO : 퍼사드 패턴 - 2개의 서비스를 의존받을 때 (refactor)
+    private final AnswerService answerService;
     private final SubmissionService submissionService;
     private final FormService formService;
 
-    public AnswerController(SubmissionService submissionService, FormService formService) {
+    public AnswerController(AnswerService answerService, SubmissionService submissionService, FormService formService) {
+        this.answerService = answerService;
         this.submissionService = submissionService;
         this.formService = formService;
     }
@@ -44,5 +47,15 @@ public class AnswerController {
         Long waitCount = submissionService.addQueue(postAnswerListRequest.getUserId(), event, answerList);
         PostAnswerResponse waittingDto = PostAnswerResponse.createWaitting(waitCount, postAnswerListRequest.getUserId());
         return ResponseEntity.ok().body(waittingDto);
+    }
+
+    /**
+     * 모든 응답 조회
+     */
+    @GetMapping("/api/v1/answer/{formId}")
+    public ResponseEntity<List<Answer>> getAllAnswerByForm(@PathVariable String formId) {
+        List<Answer> answerList = answerService.findAllByForm(formId);
+
+        return ResponseEntity.ok().body(answerList);
     }
 }

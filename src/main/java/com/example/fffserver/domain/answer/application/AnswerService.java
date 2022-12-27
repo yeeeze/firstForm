@@ -1,11 +1,12 @@
 package com.example.fffserver.domain.answer.application;
 
-import com.example.fffserver.domain.common.EmptyResultException;
 import com.example.fffserver.domain.answer.domain.AnswerRepository;
 import com.example.fffserver.domain.answer.domain.entity.Answer;
+import com.example.fffserver.domain.common.EmptyResultException;
 import com.example.fffserver.domain.form.domain.FormRepository;
 import com.example.fffserver.domain.form.domain.entity.Form;
 import com.example.fffserver.domain.question.domain.entity.Question;
+import org.bson.types.ObjectId;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -33,5 +34,9 @@ public class AnswerService {
             answerList.get(i).mappedQuestionId(questions.get(i).getId());
         }
         answerRepository.saveAll(answerList);
+    }
+
+    public List<Answer> findAllByForm(String formId) {
+        return answerRepository.findAllByFormId(new ObjectId(formId));
     }
 }
