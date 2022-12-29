@@ -116,19 +116,38 @@ function insertInitTextAnswer(newDiv, parent, cnt) {
     parent.appendChild(newDiv);
 }
 
+/**
+ * 페이지 화면 분리 (질문 응답 설정)
+ */
 let settingBox = document.getElementById("setting");
-let notSettingBox = document.getElementById("notSetting");
+let questionBox = document.getElementById("notSetting");
+let answerBox = document.getElementById('answerPage');
+
 let settingButton = document.getElementById("settingButton");
 let questionButton = document.getElementById("questionButton");
+let answerButton = document.getElementById('answerButton');
+let plusButton = document.getElementById('float');
 settingButton.addEventListener('click', () => {
     settingBox.style.display = 'block';
-    notSettingBox.style.display = 'none';
+    questionBox.style.display = 'none';
+    answerBox.style.display = 'none';
+    plusButton.style.display = 'none';
 })
 
 questionButton.addEventListener('click', () => {
     settingBox.style.display = 'none';
-    notSettingBox.style.display = 'block';
+    questionBox.style.display = 'block';
+    answerBox.style.display = 'none';
+    plusButton.style.display = 'block';
 });
+
+answerButton.addEventListener('click', () => {
+    settingBox.style.display = 'none';
+    questionBox.style.display = 'none';
+    answerBox.style.display = 'block';
+    plusButton.style.display = 'none';
+    getAnswerList();
+})
 
 /**
  * 설정값 validation

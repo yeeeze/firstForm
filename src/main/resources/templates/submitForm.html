@@ -167,7 +167,7 @@
     const form = [[${form}]];
     const formId = [[${formId}]];
     let questionList = [[${questions}]];
-    let host = "http://localhost:8080/api/v1/"
+    let host = "http://172.30.1.96:8080/api/v1/"
     const body = document.getElementById("body");
 
     const postAnswerButton = document.querySelector("#postAnswerButton");
@@ -194,7 +194,7 @@
             if (response.ok) {
               return response.json();
             } else {
-              response.text();
+              return response.text();
             }
 
           })

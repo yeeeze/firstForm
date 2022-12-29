@@ -13,15 +13,13 @@ public class PostFormReq {
     private final String title;
     private final String description;
     private final LocalDateTime startTime;
-    private final LocalDateTime endTime;
     private final Integer winnersNumber;
     private final List<QuestionPostReq> questionPostReqs;      // title, type, content
 
-    public PostFormReq(String title, String description, LocalDateTime startTime, LocalDateTime endTime, Integer winnersNumber, List<QuestionPostReq> questionPostReqs) {
+    public PostFormReq(String title, String description, LocalDateTime startTime, Integer winnersNumber, List<QuestionPostReq> questionPostReqs) {
         this.title = title;
         this.description = description;
         this.startTime = startTime;
-        this.endTime = endTime;
         this.winnersNumber = winnersNumber;
         this.questionPostReqs = questionPostReqs;
     }
@@ -38,10 +36,6 @@ public class PostFormReq {
         return startTime;
     }
 
-    public LocalDateTime getEndTime() {
-        return endTime;
-    }
-
     public Integer getWinnersNumber() {
         return winnersNumber;
     }
@@ -50,6 +44,6 @@ public class PostFormReq {
         List<Question> questions = questionPostReqs.stream()
                 .map(QuestionPostReq::toQuestion)
                 .collect(Collectors.toList());
-        return new Form(title, description, startTime, endTime, winnersNumber, questions);
+        return new Form(title, description, startTime, winnersNumber, questions);
     }
 }

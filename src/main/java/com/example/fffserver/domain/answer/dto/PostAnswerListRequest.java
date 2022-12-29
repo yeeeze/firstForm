@@ -20,7 +20,7 @@ public class PostAnswerListRequest {
 
     public List<Answer> toAnswerListMappedForm(String formId) {
         return content.stream()
-                .map(c -> new Answer(c, new ObjectId(formId)))
+                .map(c -> new Answer(this.userId, c, new ObjectId(formId)))
                 .collect(Collectors.toList());
     }
 }

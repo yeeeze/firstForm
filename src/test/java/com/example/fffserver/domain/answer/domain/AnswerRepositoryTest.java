@@ -10,6 +10,7 @@ import org.springframework.boot.test.autoconfigure.data.mongo.DataMongoTest;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -30,13 +31,13 @@ class AnswerRepositoryTest {
         ObjectId objectId = new ObjectId();
         List<Answer> answerList = new ArrayList<>();
         for (int i = 0; i < 3; i++) {
-            Answer answer = new Answer(String.valueOf(i), objectId);
+            Answer answer = new Answer(UUID.randomUUID().toString(), String.valueOf(i), objectId);
             answerList.add(answer);
         }
         answerRepository.saveAll(answerList);
 
         ObjectId objectId2 = new ObjectId();
-        Answer answer = new Answer("test", objectId2);
+        Answer answer = new Answer(UUID.randomUUID().toString(), "test", objectId2);
         answerRepository.save(answer);
 
         List<Answer> allByFormId = answerRepository.findAllByFormId(objectId);

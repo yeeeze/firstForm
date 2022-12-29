@@ -73,7 +73,7 @@ class SubmissionServiceTest {
             final int winner = 30;
             final CountDownLatch countDownLatch = new CountDownLatch(user);
 
-            form = new Form(LocalDateTime.now(), LocalDateTime.now().plusDays(2L), winner, List.of(new Question("유저 이름", "TEXT", null)));
+            form = new Form(LocalDateTime.now(), winner, List.of(new Question("유저 이름", "TEXT", null)));
             formRepository.insert(form);
             keys.add(form.getId().toString());
 
@@ -110,11 +110,11 @@ class SubmissionServiceTest {
             final CountDownLatch countDownLatch1 = new CountDownLatch(user);
             final CountDownLatch countDownLatch2 = new CountDownLatch(user);
 
-            formFirst = new Form(LocalDateTime.now(), LocalDateTime.now().plusDays(2L), winner, List.of(new Question("유저 이름", "TEXT", null)));
+            formFirst = new Form(LocalDateTime.now(), winner, List.of(new Question("유저 이름", "TEXT", null)));
             formRepository.insert(formFirst);
             keys.add(formFirst.getId().toString());
 
-            formSecond = new Form(LocalDateTime.now(), LocalDateTime.now().plusDays(2L), winner, List.of(new Question("유저 이름", "TEXT", null)));
+            formSecond = new Form(LocalDateTime.now(), winner, List.of(new Question("유저 이름", "TEXT", null)));
             formRepository.insert(formSecond);
             keys.add(formSecond.getId().toString());
 
@@ -158,7 +158,7 @@ class SubmissionServiceTest {
         @Override
         public void run() {
             String userName = UUID.randomUUID().toString();
-            submissionService.addQueue(userName, event, List.of(new Answer(userName, event.getFormId())));
+            submissionService.addQueue(userName, event, List.of(new Answer(userName, "content", event.getFormId())));
             countDownLatch.countDown();
         }
     }

@@ -1,4 +1,6 @@
-let host = "http://localhost:8080/api/v1/"
+let host = "http://172.30.1.96:8080/api/v1/"
+// TODO : 생각해보니까 응답을 볼 수 있는 사람은 제한되어야하는데... 이 페이지는 정적이라 누구에게나 동일하게 보인다.
+let formId;
 
 const postFormButton = document.querySelector("#postFormButton");
 let myModal = new bootstrap.Modal(document.getElementById('myModal'), {
@@ -20,7 +22,6 @@ postFormButton.addEventListener("click", () => {
                 title: document.getElementById("title").value,
                 description: document.getElementById("description").value,
                 startTime: document.getElementById("startTime").value,
-                endTime: document.getElementById("endTime").value,
                 winnersNumber: document.getElementById("winnersNumber").value,
                 questionPostReqs: createQuestions()
             })
@@ -29,6 +30,7 @@ postFormButton.addEventListener("click", () => {
             .then((data) => {
                 let formUrlInput = document.querySelector("#formUrl");
                 formUrlInput.value = host + "form/" + data;
+                formId = data;
             })
             .catch(err => {
                 console.log('Fetch Error', err);
@@ -81,4 +83,36 @@ function createQuestions() {
         questionList.push(question);
     }
     return questionList;
+}
+
+function getAnswerList() {
+    let answerBody = document.getElementById('answerBody');
+
+    if (formId == null) {
+        answerBody.innerText = "응답을 기다리는 중입니다.";
+        return;
+    } else {
+        let newWindow = window.open();
+    }
+
+    fetch(host + "answer" + formId, {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json",
+        }
+    })
+        .then((response) => {
+            if (response.ok) {
+                return response.json();
+            } else {
+                response.text();
+            }
+        })
+        .then((data) => {
+            answerBody.innerText = data;
+        })
+        .catch(err => {
+            console.log('Fetch Error', err);
+            document.getElementsByTagName('body').innerText = err;
+        });
 }

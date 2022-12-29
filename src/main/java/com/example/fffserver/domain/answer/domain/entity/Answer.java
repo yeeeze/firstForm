@@ -11,6 +11,7 @@ public class Answer extends BaseEntity {
 
     @Id
     private ObjectId id;
+    private String userId;
     private String content;
     private ObjectId formId;
     private ObjectId questionId;
@@ -18,7 +19,8 @@ public class Answer extends BaseEntity {
     public Answer() {
     }
 
-    public Answer(String content, ObjectId formId) {
+    public Answer(String userId, String content, ObjectId formId) {
+        this.userId = userId;
         this.content = content;
         this.formId = formId;
     }

@@ -33,7 +33,7 @@ class MongoTest {
         List<Question> questions = new ArrayList<>();
         questions.add(new Question("학번", "TEXT", null));
         questions.add(new Question("이름", "TEXT", null));
-        Form form = new Form(LocalDateTime.now(), LocalDateTime.of(2022, Month.DECEMBER, 7, 23, 59), 20, questions);
+        Form form = new Form(LocalDateTime.now(), 20, questions);
 
         Form save = formRepository.save(form);
         formId = save.getId();

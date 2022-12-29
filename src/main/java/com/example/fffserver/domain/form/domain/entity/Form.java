@@ -38,22 +38,22 @@ public class Form extends BaseEntity {
     public Form() {
     }
 
-    public Form(LocalDateTime startTime, LocalDateTime endTime, Integer winnersNumber, List<Question> questions) {
+    public Form(LocalDateTime startTime, Integer winnersNumber, List<Question> questions) {
         this.startTime = startTime;
-        this.endTime = endTime;
         this.winnersNumber = winnersNumber;
         this.questions = questions;
         this.status = StatusType.ACTIVE;
+        this.endTime = startTime.plusDays(2L);
     }
 
-    public Form(String title, String description, LocalDateTime startTime, LocalDateTime endTime, Integer winnersNumber, List<Question> questions) {
+    public Form(String title, String description, LocalDateTime startTime, Integer winnersNumber, List<Question> questions) {
         this.title = title;
         this.description = description;
         this.startTime = startTime;
-        this.endTime = endTime;
         this.winnersNumber = winnersNumber;
         this.questions = questions;
         this.status = StatusType.ACTIVE;
+        this.endTime = startTime.plusDays(2L);
     }
 
     public void changeEndTime(LocalDateTime endTime) {
