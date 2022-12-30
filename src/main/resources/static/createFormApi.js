@@ -1,4 +1,4 @@
-let host = "http://localhost:8080/api/v1/"
+let host = "http://15.164.54.82/api/v1/"
 // TODO : 생각해보니까 응답을 볼 수 있는 사람은 제한되어야하는데... 이 페이지는 정적이라 누구에게나 동일하게 보인다.
 let formId;
 
