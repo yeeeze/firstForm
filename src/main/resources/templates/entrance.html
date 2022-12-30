@@ -52,20 +52,31 @@
         timeCheck.innerText = "남은 시간 숨기기";
         remainTimeH2.hidden = false;
         interval = setInterval(() => {
-          console.log(checkRemainTime());
-          remainTimeH2.innerText = checkRemainTime()
+          remainTimeH2.innerText = checkRemainTime();
         }, 1000);
       }
     })
 
     function checkRemainTime() {
       let remainTime = startTimeToDate - Date.now();
+      if (remainTime < 0) {
+        return "입장하세요!";
+      }
 
+      const diffSec = Math.floor(remainTime / 1000 % 60);
       const diffDay = String(Math.floor(remainTime / (1000 * 60 * 60 * 24)));
       const diffHour = String(Math.floor((remainTime / (1000 * 60 * 60)) % 24)).padStart(2, "0");
       const diffMin = String(Math.floor((remainTime / (1000 * 60)) % 60)).padStart(2, "0");
-      const diffSec = String(Math.floor(remainTime / 1000 % 60)).padStart(2,"0");
-      return diffDay + "일 " + diffHour + "시간 " + diffMin + "분 " + diffSec + "초";
+      const diffSecString = String(diffSec).padStart(2, "0");
+      if (diffDay === '0' && diffHour === '00' && diffMin === '00' && diffSec <= 5) {
+        changeColor();
+      }
+      return diffDay + "일 " + diffHour + "시간 " + diffMin + "분 " + diffSecString + "초";
+    }
+
+    function changeColor(color) {
+      let remainTime = document.getElementById('remainTime');
+      remainTime.style.color = color;
     }
 
     function dateToString(timeStr) {
