@@ -1,5 +1,12 @@
-// +버튼을 누르면 동적으로 폼을 추가해주고 싶어
 let idNum = 0;
+// - 버튼
+function removeForm() {
+    let formContent = document.getElementById("formContent" + idNum);
+    formContent.remove();
+    idNum--;
+}
+
+// +버튼을 누르면 동적으로 폼을 추가해주고 싶어
 function createForm() {
     let formContent = document.getElementById("formContent" + idNum);
     let newForm = formContent.cloneNode(true);
