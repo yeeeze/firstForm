@@ -59,10 +59,35 @@
 
                 sse.addEventListener('order', function (event) {
                   // 대기 순번 동기화, body innerText 변경
-                  document.getElementById("body").innerText = event.data;
+                  let status = event.comment;
+                  let data = event.data;
+                  console.log(status);
+                  if (status === "W") {
+                    createDiv(data, "/media/queue.png");
+                  } else if (status === "T") {
+                    createDiv(data, "/media/winner.png");
+                  } else {
+                    createDiv(data, "/media/the-end.png");
+                  }
                 });
               })
       ;
+    }
+
+    function createDiv(data, png) {
+      // let htmlDivElement = document.createElement("div");
+      // htmlDivElement.innerText =
+      //         "<div class=\"px-4 py-5 my-5 text-center\">\n" +
+      //         "    <img class=\"d-block mx-auto mb-4\" src=\"" + png + "\" alt=\"\" width=\"170\">\n" +
+      //         "    <br>\n" +
+      //         "    <h2 class=\"fw-bold\">" + data + "</h2>\n" +
+      //         "</div>";
+      // document.getElementById('body').appendChild(htmlDivElement);
+      document.getElementById('body').innerHTML = "<div class=\"px-4 py-5 my-5 text-center\">\n" +
+              "    <img class=\"d-block mx-auto mb-4\" src=\"" + png + "\" width=\"170\"\>\n" +
+              "    <br>\n" +
+              "    <h2 class=\"fw-bold\">" + data + "</h2>\n" +
+              "</div>";
     }
 
     document.addEventListener("DOMContentLoaded", function () {
@@ -145,6 +170,9 @@
   </script>
 </head>
 <body id="body">
+<img class="img" th:src="@{/media/queue.png}" width="170" style="display: none"/>
+<img class="img" th:src="@{/media/the-end.png}" width="170" style="display: none"/>
+<img class="img" th:src="@{/media/winner.png}" width="170" style="display: none"/>
   <section>
     <div class="card" style="margin-top: 10px; margin-bottom: 10px">
       <h5 class="card-header">선착순 Form</h5>
@@ -167,7 +195,7 @@
     const form = [[${form}]];
     const formId = [[${formId}]];
     let questionList = [[${questions}]];
-    let host = "http://15.164.54.82/api/v1/"
+    let host = "http://first-form.shop/api/v1/"
     const body = document.getElementById("body");
 
     const postAnswerButton = document.querySelector("#postAnswerButton");
