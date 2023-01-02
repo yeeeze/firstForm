@@ -183,3 +183,11 @@ const alertBoot = (message, type) => {
 
     document.getElementById('setting').appendChild(wrapper);
 }
+
+let copyBtn = document.getElementById('copyBtn');
+copyBtn.addEventListener('click', () => {
+    let copyText = document.getElementById('formUrl');
+    copyText.select();
+    copyText.setSelectionRange(0, 99999);
+    document.execCommand('Copy');
+});
