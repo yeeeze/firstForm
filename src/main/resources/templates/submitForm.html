@@ -59,34 +59,25 @@
 
                 sse.addEventListener('order', function (event) {
                   // 대기 순번 동기화, body innerText 변경
-                  let status = event.comment;
-                  let data = event.data;
-                  console.log(status);
-                  if (status === "W") {
-                    createDiv(data, "/media/queue.png");
-                  } else if (status === "T") {
-                    createDiv(data, "/media/winner.png");
+                  // let data = event.data;
+                  let data = JSON.parse(event.data);
+                  if (data.status === "WAIT") {
+                    createDiv(data.msg, "/media/queue.png");
+                  } else if (data.status === "SUCCESS") {
+                    createDiv(data.msg, "/media/winner.png");
                   } else {
-                    createDiv(data, "/media/the-end.png");
+                    createDiv(data.msg, "/media/the-end.png");
                   }
                 });
               })
       ;
     }
 
-    function createDiv(data, png) {
-      // let htmlDivElement = document.createElement("div");
-      // htmlDivElement.innerText =
-      //         "<div class=\"px-4 py-5 my-5 text-center\">\n" +
-      //         "    <img class=\"d-block mx-auto mb-4\" src=\"" + png + "\" alt=\"\" width=\"170\">\n" +
-      //         "    <br>\n" +
-      //         "    <h2 class=\"fw-bold\">" + data + "</h2>\n" +
-      //         "</div>";
-      // document.getElementById('body').appendChild(htmlDivElement);
+    function createDiv(dataMsg, png) {
       document.getElementById('body').innerHTML = "<div class=\"px-4 py-5 my-5 text-center\">\n" +
               "    <img class=\"d-block mx-auto mb-4\" src=\"" + png + "\" width=\"170\"\>\n" +
               "    <br>\n" +
-              "    <h2 class=\"fw-bold\">" + data + "</h2>\n" +
+              "    <h2 class=\"fw-bold\">" + dataMsg + "</h2>\n" +
               "</div>";
     }
 
@@ -195,16 +186,17 @@
     const form = [[${form}]];
     const formId = [[${formId}]];
     let questionList = [[${questions}]];
-    let host = "http://first-form.shop/api/v1/"
+    let host = "http://first-form.shop/api/v1/";
+    // let host = "http://localhost:8080/api/v1/"
     const body = document.getElementById("body");
 
     const postAnswerButton = document.querySelector("#postAnswerButton");
     let orderCnt;
     postAnswerButton.addEventListener("click", () => {
-      // let standard = new Date(2022, 11, 26, 21, 16);
-      // let now = new Date();
-      // setTimeout(testTimeout, standard.getTime() - now.getTime());
-      testTimeout();
+      let standard = new Date(2023, 0, 5, 11, 58);
+      let now = new Date();
+      setTimeout(testTimeout, standard.getTime() - now.getTime());
+      // testTimeout();
     })
 
     function testTimeout() {

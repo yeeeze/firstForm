@@ -56,7 +56,8 @@ public class SubmissionService {
             userAnswerMap.put(event.getFormId().toString() + userId, answerList);
             log.info("이벤트명: {}, addQueue() 완료 : {} {} ({}초)", event.getFormId().toString(), userId, Thread.currentThread().getName(), now);
             Long rank = redisTemplate.opsForZSet().rank(event.getFormId().toString(), userId);
-            sendToClient(userId, "현재 대기번호는 " + rank + "입니다.\n");
+            EventStreamDataJson dataJson = new EventStreamDataJson("현재 대기번호는 " + rank + "입니다.", EventStatus.WAIT);
+            sendToClient(userId, dataJson);
             return rank;
         } else {
             throw new BusinessException(ExceptionCode.AFTER_END);
@@ -80,7 +81,8 @@ public class SubmissionService {
             for (String userId : waitingQueue) {
                 Long rank = redisTemplate.opsForZSet().rank(eventId, userId);
                 log.info("{} 이벤트의 {}님의 현재 대기번호는 {}입니다.",eventId, userId, rank);
-                sendToClient(userId, "현재 대기번호는 " + rank + "입니다.\n");
+                EventStreamDataJson dataJson = new EventStreamDataJson("현재 대기번호는 " + rank + "입니다.", EventStatus.WAIT);
+                sendToClient(userId, dataJson);
             }
         });
     }
@@ -112,7 +114,8 @@ public class SubmissionService {
                         List<Answer> answerList = userAnswerMap.get(eventId + userId);
                         answerService.mappedQuestionAndInsert(answerList);
                         log.info("{}님의 응답 제출이 완료됐습니다. 이벤트: {}, 응답: {}", userId, eventId, answerList);
-                        sendToClient(userId, "응답 제출이 완료됐습니다. 감사합니다.");
+                        EventStreamDataJson dataJson = new EventStreamDataJson("응답 제출이 완료됐습니다. 감사합니다.", EventStatus.SUCCESS);
+                        sendToClient(userId, dataJson);
                     }
                 });
     }
@@ -129,7 +132,8 @@ public class SubmissionService {
 
             for (String userId : waitingQueue) {
                 log.info("{}님에게 마감 소식 알림", userId);
-                sendToClient(userId, "==== " + event.getFormId().toString() + "의 선착순이 마감되었습니다. ====");
+                EventStreamDataJson dataJson = new EventStreamDataJson("==== 선착순이 마감되었습니다. 참여해주셔서 감사합니다. ====", EventStatus.FAIL);
+                sendToClient(userId, dataJson);
             }
             return true;
         }
@@ -142,12 +146,12 @@ public class SubmissionService {
         return redisTemplate.opsForZSet().size(event.getFormId().toString());
     }
 
-    public void resendLastEvent(String userId, String lastEventData) {
+    public void resendLastEvent(String userId, EventStreamDataJson lastEventData) {
         sendToClient(userId, lastEventData);
     }
 
-    private void sendToClient(String userId, String data) {
-        sseEmitters.setLastEvent(userId, data);
+    private void sendToClient(String userId, EventStreamDataJson dataJson) {
+        sseEmitters.setLastEvent(userId, dataJson);
 
         Map<String, SseEmitter> emitters = sseEmitters.getEmitters();
         SseEmitter emitter = emitters.get(userId);
@@ -157,7 +161,7 @@ public class SubmissionService {
                 emitter.send(SseEmitter.event()
                         .id(userId)
                         .name("order")
-                        .data(data));
+                        .data(dataJson));
             } catch (IOException exception) {
                 throw new BusinessException(ExceptionCode.IO_EXCEPTION);
             }

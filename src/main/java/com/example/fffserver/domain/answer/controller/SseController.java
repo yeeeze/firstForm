@@ -1,5 +1,6 @@
 package com.example.fffserver.domain.answer.controller;
 
+import com.example.fffserver.domain.answer.domain.EventStreamDataJson;
 import com.example.fffserver.domain.answer.domain.SubmissionService;
 import com.example.fffserver.global.exception.BusinessException;
 import com.example.fffserver.global.exception.ExceptionCode;
@@ -40,8 +41,8 @@ public class SseController {
         SseEmitter emitter = new SseEmitter(SSE_DEFAULT_TIMEOUT);
         sseEmitters.add(userId, emitter);
 
-        String lastEventData = sseEmitters.getEventByUserId(userId);
-        if (!lastEventData.equals("")) {
+        EventStreamDataJson lastEventData = sseEmitters.getEventByUserId(userId);
+        if (lastEventData != null) {
             submissionService.resendLastEvent(userId, lastEventData);
         }
 

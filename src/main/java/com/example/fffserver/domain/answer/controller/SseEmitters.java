@@ -1,11 +1,11 @@
 package com.example.fffserver.domain.answer.controller;
 
+import com.example.fffserver.domain.answer.domain.EventStreamDataJson;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
 
 import java.util.Map;
-import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;
 
 @Component
@@ -13,7 +13,7 @@ import java.util.concurrent.ConcurrentHashMap;
 public class SseEmitters {
 
     private final Map<String, SseEmitter> emitters = new ConcurrentHashMap<>();
-    private final Map<String, String> lastEvents = new ConcurrentHashMap<>();
+    private final Map<String, EventStreamDataJson> lastEvents = new ConcurrentHashMap<>();
 
     public SseEmitter add(String userId, SseEmitter emitter) {
         emitters.put(userId, emitter);
@@ -34,11 +34,11 @@ public class SseEmitters {
         return this.emitters;
     }
 
-    public void setLastEvent(String id, String eventData) {
-        lastEvents.put(id, eventData);
+    public void setLastEvent(String id, EventStreamDataJson eventDataJson) {
+        lastEvents.put(id, eventDataJson);
     }
 
-    public String getEventByUserId(String userId) {
-        return Optional.ofNullable(lastEvents.get(userId)).orElse("");
+    public EventStreamDataJson getEventByUserId(String userId) {
+        return lastEvents.get(userId);
     }
 }
