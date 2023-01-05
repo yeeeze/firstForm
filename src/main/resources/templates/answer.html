@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>응답 통계 화면</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <style>
+        body {
+            margin-left: 100px;
+            margin-right: 100px;
+        }
+        th {
+            font-weight: initial;
+        }
+
+        thead > tr > th{
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h2 class="mt-4" style="text-align: center">응답 리스트</h2>
+    <br>
+    <table class="table" style="margin-top: 30px">
+        <thead>
+        <tr id="questions">
+            <th scope="col">#</th>
+            <th scope="col">제출 시간</th>
+        </tr>
+        </thead>
+        <tbody id="answers" class="table-group-divider">
+        </tbody>
+    </table>
+    <script th:inline="javascript">
+        let questionList = [[${questions}]];
+        let answerList = [[${answers}]];
+        let answerUserCnt = answerList.length / questionList.length;
+
+        let questions = document.getElementById('questions');
+        let answers = document.getElementById('answers');
+
+        let cnt = 0;
+        for (let i = 0; i < answerUserCnt; i++) {
+            let tr = document.createElement('tr');
+            let th = document.createElement('th');
+            th.innerText = i + 1;
+            tr.appendChild(th);
+
+            th = document.createElement('th');
+            th.innerText = answerList[0].createdAt;
+            tr.appendChild(th);
+
+            const start = cnt;
+            for (let j = start; j < start + questionList.length; j++) {
+                th = document.createElement('th');
+                th.innerText = answerList[j].content;
+                tr.appendChild(th);
+                cnt++;
+            }
+            answers.appendChild(tr);
+        }
+
+        for (let i = 0; i < questionList.length; i++) {
+            let th = document.createElement('th');
+            th.innerHTML = questionList[i].title;
+            questions.appendChild(th);
+        }
+    </script>
+</body>
+</html>

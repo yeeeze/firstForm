@@ -1,11 +1,13 @@
 package com.example.fffserver.domain.answer.domain.entity;
 
 import com.example.fffserver.domain.common.BaseEntity;
+import lombok.Getter;
 import org.bson.types.ObjectId;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import javax.persistence.Id;
 
+@Getter
 @Document("answer")
 public class Answer extends BaseEntity {
 

@@ -48,14 +48,4 @@ public class AnswerController {
         PostAnswerResponse waittingDto = PostAnswerResponse.createWaitting(waitCount, postAnswerListRequest.getUserId());
         return ResponseEntity.ok().body(waittingDto);
     }
-
-    /**
-     * 모든 응답 조회
-     */
-    @GetMapping("/api/v1/answer/{formId}")
-    public ResponseEntity<List<Answer>> getAllAnswerByForm(@PathVariable String formId) {
-        List<Answer> answerList = answerService.findAllByForm(formId);
-
-        return ResponseEntity.ok().body(answerList);
-    }
 }

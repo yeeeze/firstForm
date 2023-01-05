@@ -20,11 +20,6 @@ class AnswerRepositoryTest {
     @Autowired
     AnswerRepository answerRepository;
 
-    @AfterEach
-    void tearDown() {
-        answerRepository.deleteAll();
-    }
-
     @Test
     @DisplayName("findAllByFormId 성공 테스트")
     void findByFormId() {
