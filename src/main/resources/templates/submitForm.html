@@ -193,10 +193,10 @@
     const postAnswerButton = document.querySelector("#postAnswerButton");
     let orderCnt;
     postAnswerButton.addEventListener("click", () => {
-      let standard = new Date(2023, 0, 5, 11, 58);
-      let now = new Date();
-      setTimeout(testTimeout, standard.getTime() - now.getTime());
-      // testTimeout();
+      // let standard = new Date(2023, 0, 5, 11, 58);
+      // let now = new Date();
+      // setTimeout(testTimeout, standard.getTime() - now.getTime());
+      testTimeout();
     })
 
     function testTimeout() {
