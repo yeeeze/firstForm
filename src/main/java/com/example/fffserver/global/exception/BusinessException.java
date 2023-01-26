@@ -2,14 +2,14 @@ package com.example.fffserver.global.exception;
 
 public class BusinessException extends RuntimeException {
 
-    private final int status;
+  private final int status;
 
-    public BusinessException(ExceptionCode exceptionCode) {
-        super(exceptionCode.getMessege());
-        this.status = exceptionCode.getStatus();
-    }
+  public BusinessException(ExceptionCode exceptionCode) {
+    super(exceptionCode.getMessage());
+    this.status = exceptionCode.getStatus();
+  }
 
-    public int getStatus() {
-        return status;
-    }
+  public int getStatus() {
+    return status;
+  }
 }
