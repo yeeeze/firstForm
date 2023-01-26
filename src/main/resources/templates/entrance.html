@@ -1,90 +1,97 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>입장 페이지</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+  <meta charset="UTF-8">
+  <title>입장 페이지</title>
+  <link crossorigin="anonymous"
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
+        rel="stylesheet">
 </head>
 <body>
-  <div class="px-4 py-5 my-5 text-center">
-    <h1 class="display-5 fw-bold">선착순 응답 폼 참여</h1>
-    <div class="col-lg-6 mx-auto">
-      <p class="lead" style="margin-bottom: 0px">선착순 응답 참여 페이지입니다. 시작 시간이 되면 하단의 버튼을 눌러 입장하시면 됩니다.</p>
-      <p class="lead mb-4">시작 시간 전에는 입장이 불가능합니다. 행운을 빕니다!</p>
-      <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-        <button type="button" id="enterBtn" class="btn btn-primary btn-lg px-4 gap-3">입장</button>
-        <button type="button" id="timeCheckBtn" class="btn btn-outline-secondary btn-lg px-4">남은 시간 확인</button>
-      </div>
+<div class="px-4 py-5 my-5 text-center">
+  <h1 class="display-5 fw-bold">선착순 응답 폼 참여</h1>
+  <div class="col-lg-6 mx-auto">
+    <p class="lead" style="margin-bottom: 0px">선착순 응답 참여 페이지입니다. 시작 시간이 되면 하단의 버튼을 눌러 입장하시면 됩니다.</p>
+    <p class="lead mb-4">시작 시간 전에는 입장이 불가능합니다. 행운을 빕니다!</p>
+    <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+      <button class="btn btn-primary btn-lg px-4 gap-3" id="enterBtn" type="button">입장</button>
+      <button class="btn btn-outline-secondary btn-lg px-4" id="timeCheckBtn" type="button">남은 시간
+        확인
+      </button>
     </div>
-    <br>
-    <h2 id="remainTime"></h2>
   </div>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
-  <script th:inline="javascript">
-    let formId = [[${formId}]];
-    let winner = [[${winnersNum}]];
-    let startTime = [[${startTime}]];
-    let startTimeToDate = new Date(startTime.toString() + '+09:00');
-    let host = "http://first-form.shop/api/v1/";
-    // let host = "http://localhost:8080/api/v1/"
-    let enter = document.getElementById("enterBtn");
-    let timeCheck = document.getElementById("timeCheckBtn");
+  <br>
+  <h2 id="remainTime"></h2>
+</div>
+<script crossorigin="anonymous"
+        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+<script th:inline="javascript">
+  let formId = [[${formId}]];
+  let winner = [[${winnersNum}]];
+  let startTime = [[${startTime}]];
+  let startTimeToDate = new Date(startTime.toString() + '+09:00');
+  let host = "https://first-form.shop/api/v1/";
+  // let host = "http://localhost:8080/api/v1/"
+  let enter = document.getElementById("enterBtn");
+  let timeCheck = document.getElementById("timeCheckBtn");
 
-    enter.addEventListener('click', () => {
-      if (Date.now() < startTimeToDate) {
-        let start = dateToString(startTime);
-        alert(start + " 이후에 입장 가능합니다.");
-      } else {
-          location.replace(host + "form/" + formId + "/enter");
-      }
-    })
+  enter.addEventListener('click', () => {
+    if (Date.now() < startTimeToDate) {
+      let start = dateToString(startTime);
+      alert(start + " 이후에 입장 가능합니다.");
+    } else {
+      location.replace(host + "form/" + formId + "/enter");
+    }
+  })
 
-    let isChecked = false;
-    let interval;
-    timeCheck.addEventListener('click', () => {
-      let remainTimeH2 = document.getElementById('remainTime');
-      if (isChecked) {
-        clearInterval(interval);
-        isChecked = false;
-        timeCheck.innerText = "남은 시간 확인";
-        remainTimeH2.hidden = true;
-      } else {
-        isChecked = true;
-        timeCheck.innerText = "남은 시간 숨기기";
-        remainTimeH2.hidden = false;
-        interval = setInterval(() => {
-          remainTimeH2.innerText = checkRemainTime();
-        }, 1000);
-      }
-    })
+  let isChecked = false;
+  let interval;
+  timeCheck.addEventListener('click', () => {
+    let remainTimeH2 = document.getElementById('remainTime');
+    if (isChecked) {
+      clearInterval(interval);
+      isChecked = false;
+      timeCheck.innerText = "남은 시간 확인";
+      remainTimeH2.hidden = true;
+    } else {
+      isChecked = true;
+      timeCheck.innerText = "남은 시간 숨기기";
+      remainTimeH2.hidden = false;
+      interval = setInterval(() => {
+        remainTimeH2.innerText = checkRemainTime();
+      }, 1000);
+    }
+  })
 
-    function checkRemainTime() {
-      let remainTime = startTimeToDate - Date.now();
-      if (remainTime < 0) {
-        return "입장하세요!";
-      }
-
-      const diffSec = Math.floor(remainTime / 1000 % 60);
-      const diffDay = String(Math.floor(remainTime / (1000 * 60 * 60 * 24)));
-      const diffHour = String(Math.floor((remainTime / (1000 * 60 * 60)) % 24)).padStart(2, "0");
-      const diffMin = String(Math.floor((remainTime / (1000 * 60)) % 60)).padStart(2, "0");
-      const diffSecString = String(diffSec).padStart(2, "0");
-      if (diffDay === '0' && diffHour === '00' && diffMin === '00' && diffSec <= 5) {
-        changeColor();
-      }
-      return diffDay + "일 " + diffHour + "시간 " + diffMin + "분 " + diffSecString + "초";
+  function checkRemainTime() {
+    let remainTime = startTimeToDate - Date.now();
+    if (remainTime < 0) {
+      return "입장하세요!";
     }
 
-    function changeColor() {
-      let remainTime = document.getElementById('remainTime');
-      remainTime.style.color = 'red';
+    const diffSec = Math.floor(remainTime / 1000 % 60);
+    const diffDay = String(Math.floor(remainTime / (1000 * 60 * 60 * 24)));
+    const diffHour = String(Math.floor((remainTime / (1000 * 60 * 60)) % 24)).padStart(2, "0");
+    const diffMin = String(Math.floor((remainTime / (1000 * 60)) % 60)).padStart(2, "0");
+    const diffSecString = String(diffSec).padStart(2, "0");
+    if (diffDay === '0' && diffHour === '00' && diffMin === '00' && diffSec <= 5) {
+      changeColor();
     }
+    return diffDay + "일 " + diffHour + "시간 " + diffMin + "분 " + diffSecString + "초";
+  }
 
-    function dateToString(timeStr) {
-      let string = timeStr.toString();
-      string = string.substring(0, string.length - 3);
-      return string.replace('T', " ");
-    }
-  </script>
+  function changeColor() {
+    let remainTime = document.getElementById('remainTime');
+    remainTime.style.color = 'red';
+  }
+
+  function dateToString(timeStr) {
+    let string = timeStr.toString();
+    string = string.substring(0, string.length - 3);
+    return string.replace('T', " ");
+  }
+</script>
 </body>
 </html>
