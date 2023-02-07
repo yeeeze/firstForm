@@ -29,6 +29,7 @@
 <img src="https://img.shields.io/badge/HTML5-E34F26?style=flat-square&logo=HTML5&logoColor=white"> <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=JavaScript&logoColor=white"/> <img src="https://img.shields.io/badge/CSS-1572B6?style=flat-square&logo=CSS3&logoColor=white"/> <img src="https://img.shields.io/badge/Thymeleaf-005F0F?style=flat-square&logo=Thymeleaf&logoColor=white"/>
 
 <br>
+
 ### 프로젝트 구조 및 CI/CD
 <img width="1903" alt="구조도" src="https://user-images.githubusercontent.com/86194303/217302454-ca1df84f-b1c4-4765-b963-bee23ec8343f.png">
 
