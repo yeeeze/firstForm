@@ -209,11 +209,11 @@
   postAnswerButton.addEventListener("click", () => {
     // let standard = new Date(2023, 0, 5, 11, 58);
     // let now = new Date();
-    // setTimeout(testTimeout, standard.getTime() - now.getTime());
-    testTimeout();
+    // setTimeout(submitAnswer, standard.getTime() - now.getTime());
+    submitAnswer();
   })
 
-  function testTimeout() {
+  function submitAnswer() {
     fetch(host + "answer/" + formId, {
       method: "POST",
       headers: {
@@ -230,7 +230,6 @@
       } else {
         return response.text();
       }
-
     })
     .then((data) => {
       orderCnt = data.count;
