@@ -31,7 +31,8 @@
 <br>
 
 ### 프로젝트 구조 및 CI/CD
-<img width="1903" alt="구조도" src="https://user-images.githubusercontent.com/86194303/217302454-ca1df84f-b1c4-4765-b963-bee23ec8343f.png">
+<img width="1920" alt="스크린샷 2023-02-08 오후 3 44 44(2)" src="https://user-images.githubusercontent.com/86194303/217454986-20e356cb-f12d-4581-b257-0b5adea11527.png">
+
 
 ### 고민한 이슈
 
