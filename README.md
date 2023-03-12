@@ -50,33 +50,35 @@
 [https://first-form.shop/createForm.html](http://first-form.shop/createForm.html#)
 
 1. 설문지 생성 페이지에 입장합니다.
-
-![스크린샷 2023-02-07 오후 5.04.21.png](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/e0fbb919-618a-478b-ac55-48f9975eda97/스크린샷_2023-02-07_오후_5.04.21.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20230207%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20230207T161624Z&X-Amz-Expires=86400&X-Amz-Signature=0a3ba12ae27c95f4e3b6ce6f2b83d524c7baf177f6d3782477a63813f7639aa0&X-Amz-SignedHeaders=host&response-content-disposition=filename%3D%22%25EC%258A%25A4%25ED%2581%25AC%25EB%25A6%25B0%25EC%2583%25B7%25202023-02-07%2520%25EC%2598%25A4%25ED%259B%2584%25205.04.21.png%22&x-id=GetObject)
+<img width="1440" alt="IMG_6085" src="https://user-images.githubusercontent.com/86194303/224564388-709899e9-a628-46c8-930c-7f124eb8b706.PNG">
 
 - 오른쪽 + 버튼을 누르면 설문지 항목을 추가할 수 있습니다.
 - 질문 유형을 고를 수 있습니다. (현재 단답형, 객관식 질문 가능. 추후 추가 예정)
     - 객관식 질문 선택 시 옵션 추가 버튼을 누르면 답변 항목도 추가할 수 있습니다.
-        
-        ![스크린샷 2023-02-07 오후 5.06.06.png](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/0ae1794b-e57d-4eac-ae31-0d6f0f800142/스크린샷_2023-02-07_오후_5.06.06.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20230207%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20230207T161650Z&X-Amz-Expires=86400&X-Amz-Signature=8489fccfed0a301b840f0b9536c3840c8eff670031b5c3a124d01066192adb25&X-Amz-SignedHeaders=host&response-content-disposition=filename%3D%22%25EC%258A%25A4%25ED%2581%25AC%25EB%25A6%25B0%25EC%2583%25B7%25202023-02-07%2520%25EC%2598%25A4%25ED%259B%2584%25205.06.06.png%22&x-id=GetObject)
+       <img width="1440" alt="IMG_6086" src="https://user-images.githubusercontent.com/86194303/224564429-c073662b-b10e-4a31-81bf-01942fd22998.PNG">
+
         
 
 2. 원하는 내용대로 작성합니다.
 
-![스크린샷 2023-02-07 오후 5.07.17.png](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/4039c756-a5c2-464e-99ae-1e8c051c1b3e/스크린샷_2023-02-07_오후_5.07.17.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20230207%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20230207T161711Z&X-Amz-Expires=86400&X-Amz-Signature=304ae0bdcef3ceb1bd4c987a9e0a3b251b1399b1a4196fe44b96e27b01696471&X-Amz-SignedHeaders=host&response-content-disposition=filename%3D%22%25EC%258A%25A4%25ED%2581%25AC%25EB%25A6%25B0%25EC%2583%25B7%25202023-02-07%2520%25EC%2598%25A4%25ED%259B%2584%25205.07.17.png%22&x-id=GetObject)
+<img width="1440" alt="IMG_6087" src="https://user-images.githubusercontent.com/86194303/224564470-b9481be3-2c8b-4dbb-9222-bd46da86e2b2.PNG">
+
 
 3. 설정 페이지에서 설정값을 입력합니다.
     - 설정값을 필수로 입력해야합니다!
-        
-![스크린샷 2023-02-07 오후 5.11.58.png](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/110339a2-28da-49b5-9538-ea53852a3543/스크린샷_2023-02-07_오후_5.11.58.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20230207%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20230207T161725Z&X-Amz-Expires=86400&X-Amz-Signature=ce5cc4d85463b945290f5494370baeaa0cc34c8873b4c988eb4fc285e3c0e68e&X-Amz-SignedHeaders=host&response-content-disposition=filename%3D%22%25EC%258A%25A4%25ED%2581%25AC%25EB%25A6%25B0%25EC%2583%25B7%25202023-02-07%2520%25EC%2598%25A4%25ED%259B%2584%25205.11.58.png%22&x-id=GetObject)
-        
-4. 선착순 응답 시작 시간, 당첨자 수를 입력 후 보내기 버튼을 클릭합니다.
+        <img width="1309" alt="IMG_6088" src="https://user-images.githubusercontent.com/86194303/224564519-5632a0b9-0acc-4c11-9c3e-9c74c390ed90.PNG">
 
-![스크린샷 2023-02-07 오후 5.14.20.png](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/59a45c7f-3933-47c1-8a93-044488ff9bde/스크린샷_2023-02-07_오후_5.14.20.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20230207%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20230207T161802Z&X-Amz-Expires=86400&X-Amz-Signature=149ae99b6ab0d4635935d724d7abace06fcc52166eab40ff44cade8a0dab7aad&X-Amz-SignedHeaders=host&response-content-disposition=filename%3D%22%25EC%258A%25A4%25ED%2581%25AC%25EB%25A6%25B0%25EC%2583%25B7%25202023-02-07%2520%25EC%2598%25A4%25ED%259B%2584%25205.14.20.png%22&x-id=GetObject)
+
+4. 선착순 응답 시작 시간, 당첨자 수를 입력 후 보내기 버튼을 클릭합니다.
+<img width="1434" alt="IMG_6089" src="https://user-images.githubusercontent.com/86194303/224564581-77c7276e-396c-4e7b-affc-375fa68967a8.PNG">
+
+
 
 5. 보내기 버튼 클릭 시 참가 링크를 받을 수 있습니다. 
 선착순 참가를 원하는 사람들에게 해당 링크를 보내어 홍보하시면 됩니다!<br>(복사 버튼 클릭 시 링크가 복사됩니다.)
 
-![스크린샷 2023-02-07 오후 5.01.39.png](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/d4e573c8-5848-4cee-a7cf-1903a112333d/스크린샷_2023-02-07_오후_5.01.39.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20230207%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20230207T161817Z&X-Amz-Expires=86400&X-Amz-Signature=d7c61095c656cff6b7f2c8fe306e157f77206b578f2b6b0fb70d32c64cdb7b13&X-Amz-SignedHeaders=host&response-content-disposition=filename%3D%22%25EC%258A%25A4%25ED%2581%25AC%25EB%25A6%25B0%25EC%2583%25B7%25202023-02-07%2520%25EC%2598%25A4%25ED%259B%2584%25205.01.39.png%22&x-id=GetObject)
+<img width="1440" alt="IMG_6090" src="https://user-images.githubusercontent.com/86194303/224564631-363e9bc9-42a3-4f15-8f5d-ebc8b961764d.PNG">
+
 
 <br>
 
@@ -84,34 +86,39 @@
 
 1. 선착순 참가 링크로 입장합니다.
 
-![스크린샷 2023-02-07 오후 5.18.57.png](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/51be17cf-d84f-41cc-9920-523b7d9ce871/스크린샷_2023-02-07_오후_5.18.57.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20230207%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20230207T161833Z&X-Amz-Expires=86400&X-Amz-Signature=d4c30d5e79d8acb2fc669152314e9a990120351ef01bca602e009330246f5331&X-Amz-SignedHeaders=host&response-content-disposition=filename%3D%22%25EC%258A%25A4%25ED%2581%25AC%25EB%25A6%25B0%25EC%2583%25B7%25202023-02-07%2520%25EC%2598%25A4%25ED%259B%2584%25205.18.57.png%22&x-id=GetObject)
+<img width="1440" alt="IMG_6091" src="https://user-images.githubusercontent.com/86194303/224564719-8e2db329-eb86-4b1c-8245-8fd8a319ea3c.PNG">
+
     
 
 - 남은 시간 확인 버튼 클릭 시 이벤트 입장까지 남은 시간을 확인할 수 있습니다.
+<img width="1440" alt="IMG_6092" src="https://user-images.githubusercontent.com/86194303/224564736-649244f3-dd8b-4ee1-a7b0-dbca3c3802f7.PNG">
 
-![스크린샷 2023-02-07 오후 5.22.31.png](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/ab1957ed-c840-4680-ae1a-f5019bb8b78e/스크린샷_2023-02-07_오후_5.22.31.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20230207%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20230207T161856Z&X-Amz-Expires=86400&X-Amz-Signature=ec97be4735e2c3c6167d0baded982943b62d7194e3bd9c573adc4de20e2ebc4d&X-Amz-SignedHeaders=host&response-content-disposition=filename%3D%22%25EC%258A%25A4%25ED%2581%25AC%25EB%25A6%25B0%25EC%2583%25B7%25202023-02-07%2520%25EC%2598%25A4%25ED%259B%2584%25205.22.31.png%22&x-id=GetObject)
+
     
 - 입장 시간 이전에는 입장이 불가능합니다.
+<img width="1440" alt="IMG_6093" src="https://user-images.githubusercontent.com/86194303/224564747-1b2161e0-bd29-4c06-81f3-84c792731843.PNG">
 
-![스크린샷 2023-02-07 오후 5.22.50.png](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/9ee32991-36ba-4fae-9632-34dd8d83d6fa/스크린샷_2023-02-07_오후_5.22.50.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20230207%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20230207T161909Z&X-Amz-Expires=86400&X-Amz-Signature=c7a7f291d71ae9414e32718abce60a68beeed97e142abad568580d1f2be83d38&X-Amz-SignedHeaders=host&response-content-disposition=filename%3D%22%25EC%258A%25A4%25ED%2581%25AC%25EB%25A6%25B0%25EC%2583%25B7%25202023-02-07%2520%25EC%2598%25A4%25ED%259B%2584%25205.22.50.png%22&x-id=GetObject)
+
     
 
 - 남은 시간 5초부터는 빨간 글씨로 표시되며 입장 시간에는 입장하세요! 라는 문구가 뜹니다.
+<img width="1440" alt="IMG_6094" src="https://user-images.githubusercontent.com/86194303/224564753-86e3ea08-3039-4e9e-80f0-3028c6a185c8.PNG">
 
-![스크린샷 2022-12-31 오전 12.46.56.png](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/83b1e3f2-2351-4370-9412-7408ea4e5ecd/스크린샷_2022-12-31_오전_12.46.56.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20230207%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20230207T161928Z&X-Amz-Expires=86400&X-Amz-Signature=4b229ff1cfd2bf6412113ee651676cf3a1c8d365ffb5afc6fe6840594fadb8e8&X-Amz-SignedHeaders=host&response-content-disposition=filename%3D%22%25EC%258A%25A4%25ED%2581%25AC%25EB%25A6%25B0%25EC%2583%25B7%25202022-12-31%2520%25EC%2598%25A4%25EC%25A0%2584%252012.46.56.png%22&x-id=GetObject)
 
-![스크린샷 2022-12-31 오전 12.47.03.png](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/2816097d-a0c0-4b10-be72-49d20a971e1f/스크린샷_2022-12-31_오전_12.47.03.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20230207%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20230207T161948Z&X-Amz-Expires=86400&X-Amz-Signature=c2175213162f81bc5d1c8a8cfe653195cb82cbe6d70f6b50152116e5f22dc9b7&X-Amz-SignedHeaders=host&response-content-disposition=filename%3D%22%25EC%258A%25A4%25ED%2581%25AC%25EB%25A6%25B0%25EC%2583%25B7%25202022-12-31%2520%25EC%2598%25A4%25EC%25A0%2584%252012.47.03.png%22&x-id=GetObject)
+
+<img width="1440" alt="IMG_6095" src="https://user-images.githubusercontent.com/86194303/224564763-942b30bc-b793-44f7-ac16-7c6837107a49.PNG">
+
 
 2. 입장 후에 폼 답변을 작성하고 제출 버튼을 클릭합니다.
 
-![스크린샷 2023-02-07 오후 5.24.43(2).png](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/57063560-7ae2-4192-bfc5-35bdd1cfd950/스크린샷_2023-02-07_오후_5.24.43%282%29.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20230207%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20230207T162002Z&X-Amz-Expires=86400&X-Amz-Signature=b87c2e194896661b82a05d06667d73f93a0f4d74e7f0a89100242c2efa73ea5e&X-Amz-SignedHeaders=host&response-content-disposition=filename%3D%22%25EC%258A%25A4%25ED%2581%25AC%25EB%25A6%25B0%25EC%2583%25B7%25202023-02-07%2520%25EC%2598%25A4%25ED%259B%2584%25205.24.43%282%29.png%22&x-id=GetObject)
-    
-![스크린샷 2023-02-07 오후 5.25.06(2).png](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/85aac4c9-e1c7-45a1-804d-2db6918be5a1/스크린샷_2023-02-07_오후_5.25.06%282%29.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20230207%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20230207T162021Z&X-Amz-Expires=86400&X-Amz-Signature=221fd82efdb03c77cf26c2b882c3c9ebae575c03fa82d63858aaa41b485923b5&X-Amz-SignedHeaders=host&response-content-disposition=filename%3D%22%25EC%258A%25A4%25ED%2581%25AC%25EB%25A6%25B0%25EC%2583%25B7%25202023-02-07%2520%25EC%2598%25A4%25ED%259B%2584%25205.25.06%282%29.png%22&x-id=GetObject)
+<img width="1920" alt="IMG_6096" src="https://user-images.githubusercontent.com/86194303/224564779-2228eca7-1ad8-4420-9335-f92e09f16bbd.PNG">
+
+
+<img width="1920" alt="IMG_6097" src="https://user-images.githubusercontent.com/86194303/224564790-f7f2825d-a9d0-49b0-829c-98fde6564fb7.PNG">
+
     
 
 3. 제출 후에 실시간으로 변화되는 화면을 확인하며 나의 선착순 성공/실패 여부를 확인합니다.<br>(대기 번호 안내 또는 응답 완료 또는 선착순 마감 화면)
-
-![스크린샷 2023-01-06 오전 1.01.01.png](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/e961b91f-68b7-4dce-86cf-e093fb2a2353/스크린샷_2023-01-06_오전_1.01.01.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20230207%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20230207T162036Z&X-Amz-Expires=86400&X-Amz-Signature=5c390a997fca1b0a69941ff2eb487b99ba0170a1114e8bdf8e618b3d814821b0&X-Amz-SignedHeaders=host&response-content-disposition=filename%3D%22%25EC%258A%25A4%25ED%2581%25AC%25EB%25A6%25B0%25EC%2583%25B7%25202023-01-06%2520%25EC%2598%25A4%25EC%25A0%2584%25201.01.01.png%22&x-id=GetObject)
-    
+<img width="1440" alt="IMG_6098" src="https://user-images.githubusercontent.com/86194303/224564838-edafdb4a-7d51-4f9a-9174-1f33433196ea.PNG">
 <img width="1440" alt="스크린샷 2023-01-06 오전 1 02 21" src="https://user-images.githubusercontent.com/86194303/217302300-babbcd97-9428-4d9a-950e-387d101d822a.png">
 <img width="1440" alt="스크린샷 2023-01-06 오전 1 01 54" src="https://user-images.githubusercontent.com/86194303/217302317-c56fb84c-e9b1-40b3-8d3f-fb86578826aa.png">
