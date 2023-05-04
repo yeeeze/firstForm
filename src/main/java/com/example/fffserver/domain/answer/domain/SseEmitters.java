@@ -1,12 +1,10 @@
-package com.example.fffserver.domain.answer.controller;
-
-import com.example.fffserver.domain.answer.domain.EventStreamDataJson;
-import lombok.extern.slf4j.Slf4j;
-import org.springframework.stereotype.Component;
-import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
+package com.example.fffserver.domain.answer.domain;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Component;
+import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
 
 @Component
 @Slf4j

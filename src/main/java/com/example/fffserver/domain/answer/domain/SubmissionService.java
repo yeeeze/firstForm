@@ -1,7 +1,6 @@
 package com.example.fffserver.domain.answer.domain;
 
 import com.example.fffserver.domain.answer.application.AnswerService;
-import com.example.fffserver.domain.answer.controller.SseEmitters;
 import com.example.fffserver.domain.answer.domain.entity.Answer;
 import com.example.fffserver.domain.form.application.FormService;
 import com.example.fffserver.domain.form.domain.vo.Event;
