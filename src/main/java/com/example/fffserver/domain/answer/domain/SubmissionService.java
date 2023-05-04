@@ -29,7 +29,7 @@ public class SubmissionService {
 
   private static final int FIRST_INDEX = 0;
   private static final int LAST_INDEX = -1;
-  // key -> formId(event) + userName(threadName)
+  // key -> formId(event) + userName(UUID)
   private final Map<String, List<Answer>> userAnswerMap = new ConcurrentHashMap<>();
 
   private final EventFactory eventFactory;
