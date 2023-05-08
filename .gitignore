@@ -39,3 +39,4 @@ out/
 application*.properties
 schema
 test.html
+TestController.java
